@@ -37,17 +37,29 @@ if [ "$user_password" = "$correct_password" ]; then
         fi
     done
 
-wget -O docker-compose-1.yml --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-1.yml
-wget -O docker-compose-2.yml --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-2.yml
-wget -O docker-compose-3.yml --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-3.yml
-wget -O docker-compose-4.yml --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-4.yml
-wget -O docker-compose-5.yml --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-5.yml
-wget -O docker-compose-6.yml --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-6.yml
-wget -O docker-compose-7.yml --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-7.yml
-wget -O docker-compose-8.yml --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-8.yml
-wget -O docker-compose-9.yml --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-9.yml
-wget -O CreateDir.sh --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Bash/CreateDir.sh
-wget -O ModifyDir.sh --no-verbose --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Bash/ModifyDir.sh
+    files=(
+         "docker-compose-1.yml https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-1.yml"
+         "docker-compose-2.yml https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-2.yml"
+         "docker-compose-3.yml https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-3.yml"
+	 "docker-compose-4.yml https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-4.yml"
+	 "docker-compose-5.yml https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-5.yml"
+	 "docker-compose-6.yml https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-6.yml"
+	 "docker-compose-7.yml https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-7.yml"
+	 "docker-compose-8.yml https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-8.yml"
+	 "docker-compose-9.yml https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-9.yml"
+	 "CreateDir.sh https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Bash/CreateDir.sh"
+	 "ModifyDir.sh https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Bash/ModifyDir.sh"
+    )
+
+    for file_info in "${files[@]}"; do
+	IFS=' ' read -r filename url <<< "$file_info"
+	if [ ! -e "$filename" ]; then
+	    wget -O "$filename" --no-verbose --no-check-certificate "$url"
+	else
+	    echo "文件 $filename 已存在，跳过下载。"
+	fi
+    done
+
 
     case $choice in
         1)
