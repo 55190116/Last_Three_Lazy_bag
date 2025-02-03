@@ -20,13 +20,13 @@ if [ "$user_password" = "$correct_password" ]; then
 	echo "9. 仅安装美化服务 sun-panel "
 	echo "10. 仅安装娱乐服务 GBA模拟器 "
 	echo "11. 创建其余文件夹 Video子目录 、 媒体源目录"
-
+	echo "12. 删除本地所有服务及文件夹"
 	echo "0. 退出三人行懒人包安装脚本"
 
     while true; do
         read -p "请输入安装服务序号(0-11)：" choice
 
-        if [[ $choice =~ ^[0-9]{1,2}$ && $choice -le 11 ]]; then
+        if [[ $choice =~ ^[0-9]{1,2}$ && $choice -le 12 ]]; then
             if [ $choice -eq 0 ]; then
                 echo "已退出三人行懒人包安装脚本！"
                 exit 0
@@ -50,6 +50,7 @@ if [ "$user_password" = "$correct_password" ]; then
 	 "docker-compose-9.yml https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-9.yml"
 	 "CreateDir.sh https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Bash/CreateDir.sh"
 	 "ModifyDir.sh https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Bash/ModifyDir.sh"
+  	 "Remove.sh https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Bash/Remove.sh"
     )
 
     for file_info in "${files[@]}"; do
@@ -105,6 +106,10 @@ if [ "$user_password" = "$correct_password" ]; then
         11)
             echo "正在创建其余文件夹"
             bash CreateDir.sh
+            ;;
+        12)
+            echo "正在删除本地所有服务及文件夹"
+            bash Remove.sh
             ;;
     esac
 else
