@@ -4,7 +4,7 @@ services:
   qinglong: # 服务名称
     image: whyour/qinglong:latest # 镜像名称（可更改冒号后版本）
     container_name: qinglong # 容器名称（可更改）
-    port: # 容器端口（可更改冒号前端口）
+    ports: # 容器端口（可更改冒号前端口）
       - 11000:5700
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/qinglong:/ql/data
