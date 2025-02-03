@@ -104,21 +104,23 @@ if [ "$user_password" = "$correct_password" ]; then
         bash Remove.sh
     }
 
+    echo "---------------------------------------- 博客地址：blog.010322.xyz -----------------------------------------------------------------"
     echo "请选择要运行的服务："
-    echo "1. 更改根目录文件夹"
-    echo "2. 安装全部服务"
-    echo "3. 仅安装视频服务 nastool 、 jellyfin 、 qbittorrent 、 transmission 、 iyuuplus 、 xunlei 、jackett 、 alist-tvbox 、 aipan "
-    echo "4. 仅安装音乐服务 navidrome music-tag-web "
-    echo "5. 仅安装小说服务 reader "
-    echo "6. 仅安装漫画服务 komga "
-    echo "7. 仅安装办公服务 WPS 、 微力同步 、 PDF工具箱 、 在线预览文件"
-    echo "8. 仅安装网络服务 v2raya 、 frpc"
-    echo "9. 仅安装美化服务 sun-panel "
-    echo "10. 仅安装娱乐服务 GBA模拟器 "
-    echo "11. 创建其余文件夹 Video子目录 、 媒体源目录"
-    echo "12. 删除本地所有服务及文件夹"
-    echo "0. 退出三人行懒人包安装脚本"
-
+    echo "1.   更改根目录文件夹"
+    echo "2.   安装全部服务"
+    echo "3.   仅安装视频服务 nastool 、 jellyfin 、 qbittorrent 、 transmission 、 iyuuplus 、 xunlei 、jackett 、 alist-tvbox 、 aipan "
+    echo "4.   仅安装音乐服务 navidrome music-tag-web "
+    echo "5.   仅安装小说服务 reader "
+    echo "6.   仅安装漫画服务 komga "
+    echo "7.   仅安装办公服务 WPS 、 微力同步 、 PDF工具箱 、 在线预览文件"
+    echo "8.   仅安装网络服务 v2raya 、 frpc"
+    echo "9.   仅安装美化服务 sun-panel "
+    echo "10.  仅安装娱乐服务 GBA模拟器 "
+    echo "11.  创建其余文件夹 Video子目录 、 媒体源目录"
+    echo "12.  删除本地所有服务及文件夹"
+    echo "0.   退出三人行懒人包安装脚本"
+    echo "---------------------------------------- 博客地址：blog.010322.xyz -----------------------------------------------------------------"
+    
     while true; do
         read -p "请输入安装服务序号(0-12)：" choice
         if [[ $choice =~ ^[0-9]{1,2}$ && $choice -le 12 ]]; then
@@ -164,20 +166,22 @@ if [ "$user_password" = "$correct_password" ]; then
                         install_remove_service
                         ;;
                 esac
-                echo "请选择要运行的服务："
-                echo "1. 更改根目录文件夹"
-                echo "2. 安装全部服务"
-                echo "3. 仅安装视频服务 nastool 、 jellyfin 、 qbittorrent 、 transmission 、 iyuuplus 、 xunlei 、jackett 、 alist-tvbox 、 aipan "
-                echo "4. 仅安装音乐服务 navidrome music-tag-web "
-                echo "5. 仅安装小说服务 reader "
-                echo "6. 仅安装漫画服务 komga "
-                echo "7. 仅安装办公服务 WPS 、 微力同步 、 PDF工具箱 、 在线预览文件"
-                echo "8. 仅安装网络服务 v2raya 、 frpc"
-                echo "9. 仅安装美化服务 sun-panel "
-                echo "10. 仅安装娱乐服务 GBA模拟器 "
-                echo "11. 创建其余文件夹 Video子目录 、 媒体源目录"
-                echo "12. 删除本地所有服务及文件夹"
-                echo "0. 退出三人行懒人包安装脚本"
+		echo "---------------------------------------- 博客地址：blog.010322.xyz -----------------------------------------------------------------"
+		echo "请选择要运行的服务："
+		echo "1.   更改根目录文件夹"
+		echo "2.   安装全部服务"
+		echo "3.   仅安装视频服务 nastool 、 jellyfin 、 qbittorrent 、 transmission 、 iyuuplus 、 xunlei 、jackett 、 alist-tvbox 、 aipan "
+		echo "4.   仅安装音乐服务 navidrome music-tag-web "
+		echo "5.   仅安装小说服务 reader "
+		echo "6.   仅安装漫画服务 komga "
+		echo "7.   仅安装办公服务 WPS 、 微力同步 、 PDF工具箱 、 在线预览文件"
+		echo "8.   仅安装网络服务 v2raya 、 frpc"
+		echo "9.   仅安装美化服务 sun-panel "
+		echo "10.  仅安装娱乐服务 GBA模拟器 "
+		echo "11.  创建其余文件夹 Video子目录 、 媒体源目录"
+		echo "12.  删除本地所有服务及文件夹"
+		echo "0.   退出三人行懒人包安装脚本"
+		echo "---------------------------------------- 博客地址：blog.010322.xyz -----------------------------------------------------------------"
             fi
         else
             echo "输入错误！请输入有效安装服务序号(0-12)！"
