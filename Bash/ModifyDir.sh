@@ -29,5 +29,13 @@ else
     echo "警告: 文件 $file 不存在，跳过"
 fi
 
+file="Remove.sh"
+if [ -f "$file" ]; then
+    sed -i.bak "s#/vol1/1000/#${new_path}#g" "$file"
+    echo "已处理文件: $file"
+else
+    echo "警告: 文件 $file 不存在，跳过"
+fi
+
 echo -e "\n替换完成！"
 echo "原文件已备份为 .bak 后缀文件"
