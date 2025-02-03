@@ -1,0 +1,24 @@
+version: "3"
+services:
+
+  frpc: # 服务名称
+    image: snowdreamtech/frpc # 镜像名称（可更改冒号后版本）
+    container_name: frpc # 容器名称（可更改）
+    volumes: # 冒号前替换成自身路径即可（可更改）
+      - /vol1/1000/frpc:/etc/frp
+    command: -c /etc/frp/frpc.ini # 启动命令
+    restart: always # 总是启动容器
+    network_mode: host # 网络本地
+
+  #v2raya: # 服务名称
+  #  image: v2raya/v2raya:latest # 镜像名称（可更改冒号后版本）
+  #  container_name: v2raya # 容器名称（可更改）
+  #  privileged: true
+  #  ports: # 容器端口（可更改冒号前端口）
+  #    - 8010:2017
+  #  volumes: # 冒号前替换成自身路径即可（可更改）
+  #    - /vol1/1000/Docker/v2raya:/etc/v2raya
+  #  environment: # 环境变量
+  #    - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  #  restart: always # 总是启动容器
+  #  network_mode: bridge # 网络桥接
