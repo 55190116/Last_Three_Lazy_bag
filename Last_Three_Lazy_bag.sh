@@ -122,8 +122,8 @@ if [ "$user_password" = "$correct_password" ]; then
     echo "---------------------------------------- 博客地址：blog.010322.xyz -----------------------------------------------------------------"
     
     while true; do
-        read -p "请输入安装服务序号(0-12)：" choice
-        if [[ $choice =~ ^[0-9]{1,2}$ && $choice -le 12 ]]; then
+        read -p "请输入安装服务序号(0-13)：" choice
+        if [[ $choice =~ ^[0-9]{1,2}$ && $choice -le 13 ]]; then
             if [ $choice -eq 0 ]; then
                 echo "已退出三人行懒人包安装脚本！"
                 exit 0
@@ -188,7 +188,7 @@ if [ "$user_password" = "$correct_password" ]; then
 		echo "---------------------------------------- 博客地址：blog.010322.xyz -----------------------------------------------------------------"
             fi
         else
-            echo "输入错误！请输入有效安装服务序号(0-12)！"
+            echo "输入错误！请输入有效安装服务序号(0-13)！"
         fi
     done
 else
