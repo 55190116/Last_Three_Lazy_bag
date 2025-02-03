@@ -6,16 +6,7 @@ echo
 
 if [ "$user_password" = "$correct_password" ]; then
     echo "密码正确"
-    echo -e "\033[1;32m"
-    echo -e "
-       _____      ______   _________  
-      |_   _|   .' ____ \ |  _   _  | 
-        | |     | (___ \_||_/ | | \_| 
-        | |   _  _.____`.     | |     
-       _| |__/ || \____) |   _| |_    
-      |________| \______.'  |_____|   
-    "  
-    echo "欢迎来到三人行懒人包安装脚本！"
+    echo "欢迎来到三人行懒人包安装脚本！（第一次运行需要下载 .yml 和 .sh 文件）"
     
     files=(
          "docker-compose-1.yml https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-1.yml"
