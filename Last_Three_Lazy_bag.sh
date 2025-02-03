@@ -65,17 +65,17 @@ if [ "$user_password" = "$correct_password" ]; then
         6)
             echo "正在安装办公服务"
             wget -O docker-compose-6.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-6.yml
-            docker compose -f docker-compose-5.yml up -d
+            docker compose -f docker-compose-6.yml up -d
             ;;
         7)
             echo "正在安装网络服务"
             wget -O docker-compose-7.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-7.yml
-            docker compose -f docker-compose-5.yml up -d
+            docker compose -f docker-compose-7.yml up -d
             ;;
         8)
             echo "正在安装美化服务"
             wget -O docker-compose-8.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-8.yml
-            docker compose -f docker-compose-5.yml up -d
+            docker compose -f docker-compose-8.yml up -d
             ;;
         9)
             echo "正在安装游戏服务"
