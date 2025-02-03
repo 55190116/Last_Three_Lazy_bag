@@ -7,19 +7,20 @@ echo
 
 if [ "$user_password" = "$correct_password" ]; then
     echo "密码正确"
-	echo "欢迎来到三人行懒人包安装脚本！"
+	echo "欢迎来到三人行懒人包安装脚本！第一次运行请优先运行更改目录服务，并下载Compose文件！"
 	echo "请选择要运行的服务："
-	echo "1. 安装全部服务"
-	echo "2. 仅安装视频服务 nastool 、 jellyfin 、 qbittorrent 、 transmission 、 iyuuplus 、 xunlei 、jackett 、 alist-tvbox 、 aipan "
-	echo "3. 仅安装音乐服务 navidrome music-tag-web "
-	echo "4. 仅安装小说服务 reader "
-	echo "5. 仅安装漫画服务 komga "
-	echo "6. 仅安装办公服务 WPS 、 微力同步 、 PDF工具箱 、 在线预览文件" 
-	echo "7. 仅安装网络服务 v2raya 、 frpc"
-	echo "8. 仅安装美化服务 sun-panel "
-	echo "9. 仅安装娱乐服务 GBA模拟器 "
-	echo "10. 创建其余文件夹 Video子目录 、 媒体源目录"
- 	echo "11. 更改根目录文件夹"
+  	echo "1. 更改根目录文件夹"
+	echo "2. 安装全部服务"
+	echo "3. 仅安装视频服务 nastool 、 jellyfin 、 qbittorrent 、 transmission 、 iyuuplus 、 xunlei 、jackett 、 alist-tvbox 、 aipan "
+	echo "4. 仅安装音乐服务 navidrome music-tag-web "
+	echo "5. 仅安装小说服务 reader "
+	echo "6. 仅安装漫画服务 komga "
+	echo "7. 仅安装办公服务 WPS 、 微力同步 、 PDF工具箱 、 在线预览文件" 
+	echo "8. 仅安装网络服务 v2raya 、 frpc"
+	echo "9. 仅安装美化服务 sun-panel "
+	echo "10. 仅安装娱乐服务 GBA模拟器 "
+	echo "11. 创建其余文件夹 Video子目录 、 媒体源目录"
+
 	echo "0. 退出三人行懒人包安装脚本"
 
     while true; do
@@ -61,49 +62,49 @@ if [ "$user_password" = "$correct_password" ]; then
     done
 
     case $choice in
-        1)
+    	1)
+            echo "正在更改根目录文件夹"
+	    bash ModifyDir.sh
+            ;;
+        2)
             echo "正在安装全部服务"
 	    docker compose -f docker-compose-1.yml up -d
             ;;
-        2)
+        3)
             echo "正在安装视频服务"
             docker compose -f docker-compose-2.yml up -d
             ;;
-        3)
+        4)
             echo "正在安装音乐服务"
             docker compose -f docker-compose-3.yml up -d
             ;;
-        4)
+        5)
             echo "正在安装小说服务"
             docker compose -f docker-compose-4.yml up -d
             ;;
-        5)
+        6)
             echo "正在安装漫画服务"
             docker compose -f docker-compose-5.yml up -d
             ;;
-        6)
+        7)
             echo "正在安装办公服务"
             docker compose -f docker-compose-6.yml up -d
             ;;
-        7)
+        8)
             echo "正在安装网络服务"
             docker compose -f docker-compose-7.yml up -d
             ;;
-        8)
+        9)
             echo "正在安装美化服务"
             docker compose -f docker-compose-8.yml up -d
             ;;
-        9)
+        10)
             echo "正在安装游戏服务"
             docker compose -f docker-compose-9.yml up -d
             ;;
-        10)
+        11)
             echo "正在创建其余文件夹"
             bash CreateDir.sh
-            ;;
-	11)
-            echo "正在更改根目录文件夹"
-	    bash ModifyDir.sh
             ;;
     esac
 else
