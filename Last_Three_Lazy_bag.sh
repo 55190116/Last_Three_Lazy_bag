@@ -81,7 +81,7 @@ if [ "$user_password" = "$correct_password" ]; then
         docker compose -f docker-compose-9.yml up -d
     }
 
-    function install_xitong_service() {
+    function install_system_service() {
         echo "正在安装系统服务"
 	docker compose -f docker-compose-10.yml up -d
     }
@@ -153,7 +153,7 @@ if [ "$user_password" = "$correct_password" ]; then
                         install_game_service
                         ;;
 		    11)
-                        install_xitong_service
+                        install_system_service
                         ;;
                     12)
                         install_create_dir_service
