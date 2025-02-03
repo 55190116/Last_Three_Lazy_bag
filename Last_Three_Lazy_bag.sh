@@ -19,12 +19,13 @@ if [ "$user_password" = "$correct_password" ]; then
 	echo "8. 仅安装美化服务 sun-panel "
 	echo "9. 仅安装娱乐服务 GBA模拟器 "
 	echo "10. 创建其余文件夹 Video子目录 、 媒体源目录"
+ 	echo "11. 更改根目录文件夹"
 	echo "0. 退出三人行懒人包安装脚本"
 
     while true; do
-        read -p "请输入安装服务序号(1-10 或 0)：" choice
+        read -p "请输入安装服务序号(0-11)：" choice
 
-        if [[ $choice =~ ^[0-9]{1,2}$ && $choice -le 10 ]]; then
+        if [[ $choice =~ ^[0-9]{1,2}$ && $choice -le 11 ]]; then
             if [ $choice -eq 0 ]; then
                 echo "已退出三人行懒人包安装脚本！"
                 exit 0
@@ -32,60 +33,64 @@ if [ "$user_password" = "$correct_password" ]; then
                 break
             fi
         else
-            echo "输入错误！请输入有效安装服务序号(1-10 或 0)！"
+            echo "输入错误！请输入有效安装服务序号(0-11)！"
         fi
     done
+
+wget -O docker-compose-1.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-1.yml
+wget -O docker-compose-2.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-2.yml
+wget -O docker-compose-3.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-3.yml
+wget -O docker-compose-4.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-4.yml
+wget -O docker-compose-5.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-5.yml
+wget -O docker-compose-6.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-6.yml
+wget -O docker-compose-7.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-7.yml
+wget -O docker-compose-8.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-8.yml
+wget -O docker-compose-9.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-9.yml
+wget -O CreateDir.sh --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Bash/mkdir.sh
 
     case $choice in
         1)
             echo "正在安装全部服务"
-            wget -O docker-compose-1.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-1.yml
-			docker compose -f docker-compose-1.yml up -d
+	    docker compose -f docker-compose-1.yml up -d
             ;;
         2)
             echo "正在安装视频服务"
-            wget -O docker-compose-2.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-2.yml
             docker compose -f docker-compose-2.yml up -d
             ;;
         3)
             echo "正在安装音乐服务"
-            wget -O docker-compose-3.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-3.yml
             docker compose -f docker-compose-3.yml up -d
             ;;
         4)
             echo "正在安装小说服务"
-            wget -O docker-compose-4.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-4.yml
             docker compose -f docker-compose-4.yml up -d
             ;;
         5)
             echo "正在安装漫画服务"
-            wget -O docker-compose-5.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-5.yml
             docker compose -f docker-compose-5.yml up -d
             ;;
         6)
             echo "正在安装办公服务"
-            wget -O docker-compose-6.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-6.yml
             docker compose -f docker-compose-6.yml up -d
             ;;
         7)
             echo "正在安装网络服务"
-            wget -O docker-compose-7.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-7.yml
             docker compose -f docker-compose-7.yml up -d
             ;;
         8)
             echo "正在安装美化服务"
-            wget -O docker-compose-8.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-8.yml
             docker compose -f docker-compose-8.yml up -d
             ;;
         9)
             echo "正在安装游戏服务"
-            wget -O docker-compose-9.yml --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-9.yml
             docker compose -f docker-compose-9.yml up -d
             ;;
         10)
             echo "正在创建其余文件夹"
-            wget -O mkdir.sh --no-check-certificate https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Bash/mkdir.sh
-            bash mkdir.sh
+            bash CreateDir.sh
+            ;;
+	11)
+            echo "正在更改根目录文件夹"
             ;;
     esac
 else
