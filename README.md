@@ -74,3 +74,5 @@ wget -O Last_Three_Lazy_bag.sh --no-check-certificate https://gh.llkk.cc/https:/
 ```
 - 下载完成后，输入 `bash Last_Three_Lazy_bag.sh` 运行脚本
 - 按照提示输入数字即可完成懒人包的安装
+## 六、作者信息
+### 哔哩哔哩主页：[最后三人行个人主页](https://space.bilibili.com/3546844344879871?spm_id_from=333.1007.0.0)
