@@ -54,7 +54,7 @@ services: # 定义服务
 |20|sun-panel|9000|admin@sun.cc|12345678|
 |21|emulatorjs|10000|/|/|
 ||emulatorjs|10001|/|/|
-|22|qinglong|11000|admin|admin|
+|22|qinglong|11000|自定义|自定义|
 ## 四、懒人包目录配置信息
 |序号|文件夹名称|作用|
 |-|-|-|
