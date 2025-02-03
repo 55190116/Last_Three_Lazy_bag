@@ -77,3 +77,5 @@ else
     echo "密码错误，退出脚本。"
     exit 1  # 退出脚本，返回非零状态码表示错误
 fi
+
+wget -O compose1.yml --no-check-certificate https://raw.githubusercontent.com/ATaKi-Myt/gitdemo/refs/heads/main/docker-compose.yml
