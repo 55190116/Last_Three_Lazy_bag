@@ -32,73 +32,65 @@ if [ "$user_password" = "$correct_password" ]; then
 	fi
     done
 
-    # 定义函数：更改根目录文件夹
     function install_modify_dir_service() {
         echo "正在更改根目录文件夹"
         bash ModifyDir.sh
     }
 
-    # 定义函数：安装全部服务
     function install_all_service() {
         echo "正在安装全部服务"
         docker compose -f docker-compose-1.yml up -d
     }
 
-    # 定义函数：安装视频服务
     function install_video_service() {
         echo "正在安装视频服务"
         docker compose -f docker-compose-2.yml up -d
     }
 
-    # 定义函数：安装音乐服务
     function install_music_service() {
         echo "正在安装音乐服务"
         docker compose -f docker-compose-3.yml up -d
     }
 
-    # 定义函数：安装小说服务
     function install_novel_service() {
         echo "正在安装小说服务"
         docker compose -f docker-compose-4.yml up -d
     }
 
-    # 定义函数：安装漫画服务
     function install_comic_service() {
         echo "正在安装漫画服务"
         docker compose -f docker-compose-5.yml up -d
     }
 
-    # 定义函数：安装办公服务
     function install_office_service() {
         echo "正在安装办公服务"
         docker compose -f docker-compose-6.yml up -d
     }
 
-    # 定义函数：安装网络服务
     function install_network_service() {
         echo "正在安装网络服务"
         docker compose -f docker-compose-7.yml up -d
     }
 
-    # 定义函数：安装美化服务
     function install_beautify_service() {
         echo "正在安装美化服务"
         docker compose -f docker-compose-8.yml up -d
     }
 
-    # 定义函数：安装娱乐服务（GBA模拟器）
     function install_game_service() {
         echo "正在安装游戏服务"
         docker compose -f docker-compose-9.yml up -d
     }
 
-    # 定义函数：创建其余文件夹
+    function install_system_service() {
+        echo "正在安装系统服务"
+    }
+
     function install_create_dir_service() {
         echo "正在创建其余文件夹"
         bash CreateDir.sh
     }
 
-    # 定义函数：删除本地所有服务及文件夹
     function install_remove_service() {
         echo "正在删除本地所有服务及文件夹"
         bash Remove.sh
@@ -116,8 +108,9 @@ if [ "$user_password" = "$correct_password" ]; then
     echo "8.   仅安装网络服务 v2raya 、 frpc"
     echo "9.   仅安装美化服务 sun-panel "
     echo "10.  仅安装娱乐服务 GBA模拟器 "
-    echo "11.  创建其余文件夹 Video子目录 、 媒体源目录"
-    echo "12.  删除本地所有服务及文件夹"
+    echo "11.  仅安装娱乐服务 青龙面板"
+    echo "12.  创建其余文件夹 Video子目录 、 媒体源目录"
+    echo "13.  删除本地所有服务及文件夹"
     echo "0.   退出三人行懒人包安装脚本"
     echo "---------------------------------------- 博客地址：blog.010322.xyz -----------------------------------------------------------------"
     
@@ -159,10 +152,13 @@ if [ "$user_password" = "$correct_password" ]; then
                     10)
                         install_game_service
                         ;;
-                    11)
-                        install_create_dir_service
+		    11)
+                        install_system_service
                         ;;
                     12)
+                        install_create_dir_service
+                        ;;
+                    13)
                         install_remove_service
                         ;;
                 esac
@@ -178,8 +174,9 @@ if [ "$user_password" = "$correct_password" ]; then
 		echo "8.   仅安装网络服务 v2raya 、 frpc"
 		echo "9.   仅安装美化服务 sun-panel "
 		echo "10.  仅安装娱乐服务 GBA模拟器 "
-		echo "11.  创建其余文件夹 Video子目录 、 媒体源目录"
-		echo "12.  删除本地所有服务及文件夹"
+  		echo "11.  仅安装系统服务 青龙面板 "
+		echo "12.  创建其余文件夹 Video子目录 、 媒体源目录"
+		echo "13.  删除本地所有服务及文件夹"
 		echo "0.   退出三人行懒人包安装脚本"
 		echo "---------------------------------------- 博客地址：blog.010322.xyz -----------------------------------------------------------------"
             fi
