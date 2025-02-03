@@ -108,7 +108,7 @@ if [ "$user_password" = "$correct_password" ]; then
     echo "8.   仅安装网络服务 v2raya 、 frpc"
     echo "9.   仅安装美化服务 sun-panel "
     echo "10.  仅安装娱乐服务 GBA模拟器 "
-    echo "11.  仅安装娱乐服务 青龙面板"
+    echo "11.  仅安装系统服务 青龙面板"
     echo "12.  创建其余文件夹 Video子目录 、 媒体源目录"
     echo "13.  删除本地所有服务及文件夹"
     echo "0.   退出三人行懒人包安装脚本"
