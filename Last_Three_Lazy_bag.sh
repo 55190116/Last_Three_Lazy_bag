@@ -6,7 +6,7 @@ echo
 
 if [ "$user_password" = "$correct_password" ]; then
     echo "密码正确"
-    echo "欢迎来到三人行懒人包安装脚本！第一次运行请优先运行更改目录服务，并下载Compose文件！"
+    echo "欢迎来到三人行懒人包安装脚本！正在下载 .yml 和 .sh 文件！"
 
     files=(
          "docker-compose-1.yml https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Compose/docker-compose-1.yml"
@@ -27,8 +27,6 @@ if [ "$user_password" = "$correct_password" ]; then
 	IFS=' ' read -r filename url <<< "$file_info"
 	if [ ! -e "$filename" ]; then
 	    wget -O "$filename" --no-verbose --no-check-certificate "$url"
-	else
-	    echo "文件 $filename 已存在，跳过下载。"
 	fi
     done
 
