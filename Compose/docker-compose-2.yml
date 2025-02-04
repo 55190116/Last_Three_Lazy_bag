@@ -140,3 +140,16 @@ services:
       - 3090:3000
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
+
+  vertex:
+    image: lswl/vertex:latest
+    container_name: vertex
+    ports: # 容器端口（可更改冒号前端口）
+      - 3095:32110
+    volumes:
+      - /vol1/1000/Docker/vertex:/vertex
+    environment:
+      - PORT=32110
+      - TZ=Asia/Shanghai
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
