@@ -41,20 +41,23 @@ services: # 定义服务
 |8|alist-tvbox|3070|admin |admin |
 ||alist-tvbox|3080|/|/|
 |9|apipan|3090|/|/|
-|10|navidrome|4000|自定义|自定义|
-|11|music-tag-web|4010|admin|admin|
-|12|reader|5000|自定义|自定义|
-|13|komga|6000|自定义|自定义|
-|14|wps-office|7000|admin|admin|
-|15|verysync|7010|自定义|自定义|
-|16|pdftool|7020|/|/|
-|17|kkfileview|7030|/|/|
-|18|frpc|/|/|/|
-|19|v2raya|8010|自定义|自定义|
-|20|sun-panel|9000|admin@sun.cc|12345678|
-|21|emulatorjs|10000|/|/|
+|10|vertex|3095|admin|data 目录下查看|
+|11|navidrome|4000|自定义|自定义|
+|12|music-tag-web|4010|admin|admin|
+|13|reader|5000|自定义|自定义|
+|14|komga|6000|自定义|自定义|
+|15|wps-office|7000|admin|admin|
+|16|verysync|7010|自定义|自定义|
+|17|pdftool|7020|/|/|
+|18|kkfileview|7030|/|/|
+|19|siyuan|7040|/|/|
+|20|alist|7050|admin|运行日志中|
+|21|frpc|/|/|/|
+|22|v2raya|8010|自定义|自定义|
+|23|sun-panel|9000|admin@sun.cc|12345678|
+|24|emulatorjs|10000|/|/|
 ||emulatorjs|10001|/|/|
-|22|qinglong|11000|自定义|自定义|
+|25|qinglong|11000|自定义|自定义|
 ## 四、懒人包目录配置信息
 |序号|文件夹名称|作用|
 |-|-|-|
@@ -76,3 +79,4 @@ wget -O Last_Three_Lazy_bag.sh --no-check-certificate https://gh.llkk.cc/https:/
 - 按照提示输入数字即可完成懒人包的安装
 ## 六、作者信息
 ### 哔哩哔哩主页：[最后三人行个人主页](https://space.bilibili.com/3546844344879871?spm_id_from=333.1007.0.0)
+### 作者博客：[三人行博客](https://blog.010322.xyz/)
