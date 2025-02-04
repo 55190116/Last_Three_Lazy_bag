@@ -35,6 +35,7 @@ version: "3"
 # jackett        用户名：无    密码：无
 # alist-tvbox    用户名：admin 密码：admin
 # apipan         用户名：无    密码：无
+# vertex         用户名：admin 密码：data目录下查看
 # navidrome      用户名：自定义 密码：自定义
 # music-tag      用户名：admin 密码：admin
 # reader         用户名：自定义 密码：自定义
@@ -43,6 +44,8 @@ version: "3"
 # verysync       用户名：自定义 密码：自定义
 # pdftool        用户名：无    密码：无
 # kkfileview     用户名：无    密码：无
+# siyuan         用户名：无    密码：无
+# alist          用户名：admin 密码：运行日志中
 # frpc           用户名：无    密码：无
 # v2raya         用户名：自定义 密码：自定义
 # sun-panel      用户名：admin@sun.cc 密码：12345678
@@ -77,11 +80,11 @@ version: "3"
 
 ####################################################################################
 # 本懒人包端口配置
-# 影视 3000 - 3090
+# 影视 3000 - 3095
 # 音乐 4000 - 4010
 # 小说 5000 - 5000
 # 漫画 6010 - 6010
-# 办公 7000 - 7030
+# 办公 7000 - 7050
 # 网络 8010 - 8010
 # 美化 9000 - 9000
 # 娱乐 10000 - 10001
@@ -248,6 +251,19 @@ services:
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
 
+  vertex:
+    image: lswl/vertex:latest
+    container_name: vertex
+    ports: # 容器端口（可更改冒号前端口）
+      - 3095:32110
+    volumes:
+      - /vol1/1000/Docker/vertex:/vertex
+    environment:
+      - PORT=32110
+      - TZ=Asia/Shanghai
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
+
 #######################  音乐类  ############################
 
   navidrome: # 服务名称
@@ -361,6 +377,41 @@ services:
       - KK_PDF_DOWNLOAD_DISABLE=true
       - KK_FILE_UPLOAD_ENABLED=false
       - KK_CONTEXT_PATH=/
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
+
+  siyuan-note-unlock: # 服务名称
+    image: apkdv/siyuan-unlock:latest # 镜像名称（可更改冒号后版本）
+    container_name: siyuan-note-unlock # 容器名称（可更改）
+    ports: # 容器端口（可更改冒号前端口）
+      - 7040:6806/tcp
+    command:
+      - --workspace=/siyuan/workspace/
+      - --accessAuthCode=100
+    volumes: # 冒号前替换成自身路径即可（可更改）
+      - /vol1/1000/Docker/siyuan-note-unlock:/siyuan/workspace
+    environment:
+      - PUID=1000
+      - PGID=100
+      - UMASK=022
+      - TZ=Asia/Shanghai
+      - LANG=zh_CN.UTF-8
+      - LC_ALL=zh_CN.UTF-8
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
+
+  alist: # 服务名称
+    image: xhofe/alist:latest # 镜像名称（可更改冒号后版本）
+    container_name: alist # 容器名称（可更改）
+    ports: # 容器端口（可更改冒号前端口）
+      - 7050:5244
+    volumes: # 冒号前替换成自身路径即可（可更改）
+      - /vol1/1000/Docker/alist:/opt/alist/data
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+      - TZ=Asia/Shanghai
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
 
