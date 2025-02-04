@@ -77,6 +77,12 @@ wget -O Last_Three_Lazy_bag.sh --no-check-certificate https://gh.llkk.cc/https:/
 ```
 - 下载完成后，输入 `bash Last_Three_Lazy_bag.sh` 运行脚本
 - 按照提示输入数字即可完成懒人包的安装
+## 六、如何使用懒人包
+- 打开 Sun-Panel 的 Web 界面
+- 点击右上角，进入配置界面
+- 选择导入导出选项
+- 导入 Sun-Panle 美化及图标文件夹内的 .json 文件即可
+- 如果发生图标缺失，请下载 Sun-Panel-Icon.zip 导入图片即可
 ## 六、作者信息
 ### 哔哩哔哩主页：[最后三人行个人主页](https://space.bilibili.com/3546844344879871?spm_id_from=333.1007.0.0)
 ### 作者博客：[三人行博客](https://blog.010322.xyz/)
