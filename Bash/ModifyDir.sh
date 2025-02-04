@@ -11,7 +11,7 @@ if [[ $confirm != [yY] ]]; then
   exit 1
 fi
 
-for i in {1..9}; do
+for i in {1..10}; do
   file="docker-compose-$i.yml"
   if [ -f "$file" ]; then
     sed -i.bak "s#/vol1/1000/#${new_path}#g" "$file"
