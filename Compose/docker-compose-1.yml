@@ -55,11 +55,12 @@ version: "3"
 
 ####################################################################################
 # Compose文件夹：用于存放懒人包配置文件的
-# Video文件夹：用于存放影视的，sh脚本生成后续文件夹
-# Music文件夹：用于存放音乐的
 # Docker文件夹：用于存放容器的
+# Downloads：用于迅雷下载文件夹
 # frpc文件夹：用于存放内网穿透的
-# synchronous：用于同步文件夹
+# Music文件夹：用于存放音乐的
+# Synchronous：用于同步文件夹
+# Video文件夹：用于存放影视的，sh脚本生成后续文件夹
 ####################################################################################
 
 ####################################################################################
@@ -355,7 +356,7 @@ services:
     ports: # 容器端口（可更改冒号前端口）
       - 7020:8080
     volumes: # 冒号前替换成自身路径即可（可更改）
-      - /vol1/1000/Photo:/usr/share/tessdata
+      - /vol1/1000/Docker/pdftool/tessdata:/usr/share/tessdata
       - /vol1/1000/Docker/pdftool/configs:/configs
     environment:
       - DOCKER_ENABLE_SECURITY=false
