@@ -174,7 +174,7 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
-      - TRANSMISSION_WEB_HOME=/config/webui/zhuti
+      - TRANSMISSION_WEB_HOME=/config/webui/Transmission Theme
       - USER=root
       - PASS=root
     restart: always # 总是启动容器
