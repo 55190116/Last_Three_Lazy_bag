@@ -51,6 +51,7 @@ version: "3"
 # sun-panel      用户名：admin@sun.cc 密码：12345678
 # emulatorjs     用户名：无    密码：无
 # qinglong       用户名：自定义 密码：自定义
+# homeassistant  用户名：自定义 密码：自定义
 ####################################################################################
 
 ####################################################################################
@@ -89,7 +90,7 @@ version: "3"
 # 网络 8010 - 8010
 # 美化 9000 - 9000
 # 娱乐 10000 - 10001
-# 系统 11000 - 11000
+# 系统 11000 - 11010
 ####################################################################################
 
 services:
@@ -482,5 +483,17 @@ services:
       - /vol1/1000/Docker/qinglong:/ql/data
     environment:
       - QlPort=5700
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
+    
+  homeassistant: # 服务名称
+    image: homeassistant/home-assistant:latest # 镜像名称（可更改冒号后版本）
+    container_name: homeassistant # 容器名称（可更改）
+    ports: # 容器端口（可更改冒号前端口）
+      - 11010:8123
+    volumes: # 冒号前替换成自身路径即可（可更改）
+      - /vol1/1000/Docker/homeassistant:/config
+    environment:
+      - TZ=Asia/Shanghai
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
