@@ -188,8 +188,8 @@ services:
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/iyuuplus/iyuu:/iyuu
       - /vol1/1000/Docker/iyuuplus/data:/data
-      # - /vol1/1000/Docker/qbittorrent/qBittorrent/BT_backup:/qb
-      # - /vol1/1000/Docker/transmission/torrents:/tr
+      - /vol1/1000/Docker/qbittorrent/qBittorrent/BT_backup:/qb
+      - /vol1/1000/Docker/transmission/torrents:/tr
     environment: # 环境变量
       - PUID=0
       - PGID=0
