@@ -347,7 +347,7 @@ services:
     ports: # 容器端口（可更改冒号前端口）
       - 7010:8886
     volumes: # 冒号前替换成自身路径即可（可更改）
-      - /vol1/1000/synchronous:/data
+      - /vol1/1000/Synchronous:/data
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
     
