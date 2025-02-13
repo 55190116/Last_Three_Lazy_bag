@@ -86,7 +86,7 @@ version: "3"
 # 音乐 4000 - 4010
 # 小说 5000 - 5000
 # 漫画 6010 - 6010
-# 办公 7000 - 7050
+# 办公 7000 - 7060
 # 网络 8010 - 8010
 # 美化 9000 - 9000
 # 娱乐 10000 - 10001
@@ -206,7 +206,7 @@ services:
       - 3050:2345
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/xunlei:/xunlei/data
-      - /vlo1/1000/Downloads:/xunlei/downloads
+      - /vol1/1000/Downloads:/xunlei/downloads
     environment: # 环境变量
       - XL_GID=0
       - XL_UID=0
@@ -416,7 +416,21 @@ services:
       - TZ=Asia/Shanghai
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
-
+  
+  newsnow: # 服务名称
+    image: ghcr.io/ourongxing/newsnow:latest # 镜像名称（可更改冒号后版本）
+    container_name: newsnow # 容器名称（可更改）
+    ports: # 容器端口（可更改冒号前端口）
+      - 7060:4444
+    environment:
+      - G_CLIENT_ID=
+      - G_CLIENT_SECRET=
+      - JWT_SECRET=
+      - INIT_TABLE=true=
+      - ENABLE_CACHE=true
+    network_mode: bridge # 总是启动容器
+    restart: always # 网络桥接
+    
 #######################  网络类  ############################ 
 
   frpc: # 服务名称
