@@ -52,13 +52,14 @@ services: # 定义服务
 |18|kkfileview|7030|/|/|
 |19|siyuan|7040|/|/|
 |20|alist|7050|admin|运行日志中|
-|21|frpc|/|/|/|
-|22|v2raya|8010|自定义|自定义|
-|23|sun-panel|9000|admin@sun.cc|12345678|
-|24|emulatorjs|10000|/|/|
+|21|newsnow|7060|/|/|
+|22|frpc|/|/|/|
+|23|v2raya|8010|自定义|自定义|
+|24|sun-panel|9000|admin@sun.cc|12345678|
+|25|emulatorjs|10000|/|/|
 ||emulatorjs|10001|/|/|
-|25|qinglong|11000|自定义|自定义|
-|26|home-assistant|11010|自定义|自定义|
+|26|qinglong|11000|自定义|自定义|
+|27|home-assistant|11010|自定义|自定义|
 ## 四、懒人包目录配置信息
 |序号|文件夹名称|作用|
 |-|-|-|
