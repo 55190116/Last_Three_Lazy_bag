@@ -94,7 +94,7 @@ services:
       - 3050:2345
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/xunlei:/xunlei/data
-      - /vlo1/1000/Donwnlods:/xunlei/downloads
+      - /vol1/1000/Donwnlods:/xunlei/downloads
     environment: # 环境变量
       - XL_GID=0
       - XL_UID=0
