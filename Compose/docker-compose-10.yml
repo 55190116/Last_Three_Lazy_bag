@@ -1,4 +1,3 @@
-version: "3"
 services:
 
   qinglong: # 服务名称
