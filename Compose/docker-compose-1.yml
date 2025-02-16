@@ -1,5 +1,3 @@
-version: "3"
-
 ####################################################################################
 # 单独启动容器
 # version: "3"
@@ -25,40 +23,42 @@ version: "3"
 ####################################################################################
 
 ####################################################################################
-# nastools       用户名：admin 密码：password
-# moviepilot     用户名：admin 密码：运行日志中
-# jellyfin       用户名：自定义 密码：自定义
-# qbaittorrent   用户名：admin 密码：运行日志中
-# transmission   用户名：root  密码：root
-# iyuuplus       用户名：自定义 密码：自定义
-# xunlei         用户名：admin 密码：admin
-# jackett        用户名：无    密码：无
-# alist-tvbox    用户名：admin 密码：admin
-# apipan         用户名：无    密码：无
-# vertex         用户名：admin 密码：data目录下查看
-# navidrome      用户名：自定义 密码：自定义
-# music-tag      用户名：admin 密码：admin
-# reader         用户名：自定义 密码：自定义
-# komga          用户名：自定义 密码：自定义
-# wps-office     用户名：admin 密码：admin
-# verysync       用户名：自定义 密码：自定义
-# pdftool        用户名：无    密码：无
-# kkfileview     用户名：无    密码：无
-# siyuan         用户名：无    密码：无
-# alist          用户名：admin 密码：运行日志中
-# frpc           用户名：无    密码：无
-# v2raya         用户名：自定义 密码：自定义
-# sun-panel      用户名：admin@sun.cc 密码：12345678
-# emulatorjs     用户名：无    密码：无
-# qinglong       用户名：自定义 密码：自定义
-# homeassistant  用户名：自定义 密码：自定义
+# nastools       是否在包内：No  用户名：admin 密码：password
+# moviepilot     是否在包内：Yes 用户名：admin 密码：运行日志中
+# jellyfin       是否在包内：Yes 用户名：自定义 密码：自定义
+# qbaittorrent   是否在包内：Yes 用户名：admin 密码：运行日志中
+# transmission   是否在包内：Yes 用户名：root  密码：root
+# iyuuplus       是否在包内：Yes 用户名：自定义 密码：自定义
+# xunlei         是否在包内：Yes 用户名：admin 密码：admin
+# jackett        是否在包内：Yes 用户名：无    密码：无
+# alist-tvbox    是否在包内：Yes 用户名：admin 密码：admin
+# apipan         是否在包内：Yes 用户名：无    密码：无
+# vertex         是否在包内：Yes 用户名：admin 密码：data目录下查看
+# navidrome      是否在包内：Yes 用户名：自定义 密码：自定义
+# music-tag      是否在包内：Yes 用户名：admin 密码：admin
+# reader         是否在包内：Yes 用户名：自定义 密码：自定义
+# komga          是否在包内：Yes 用户名：自定义 密码：自定义
+# wps-office     是否在包内：No  用户名：admin 密码：admin
+# verysync       是否在包内：Yes 用户名：自定义 密码：自定义
+# pdftool        是否在包内：Yes 用户名：无    密码：无
+# kkfileview     是否在包内：Yes 用户名：无    密码：无
+# siyuan         是否在包内：Yes 用户名：无    密码：无
+# alist          是否在包内：Yes 用户名：admin 密码：运行日志中
+# npc            是否在包内：Yes 用户名：无    密码：无
+# frpc           是否在包内：No  用户名：无    密码：无
+# v2raya         是否在包内：No  用户名：自定义 密码：自定义
+# sun-panel      是否在包内：Yes 用户名：admin@sun.cc 密码：12345678
+# emulatorjs     是否在包内：Yes 用户名：无    密码：无
+# teamspeak      是否在包内：No  用户名：无    密码：无
+# qinglong       是否在包内：Yes 用户名：自定义 密码：自定义
+# homeassistant  是否在包内：Yes 用户名：自定义 密码：自定义
+# mysql          是否在包内：No  用户名：无    密码：无
 ####################################################################################
 
 ####################################################################################
 # Compose文件夹：用于存放懒人包配置文件的
 # Docker文件夹：用于存放容器的
 # Downloads：用于迅雷下载文件夹
-# frpc文件夹：用于存放内网穿透的
 # Music文件夹：用于存放音乐的
 # Synchronous：用于同步文件夹
 # Video文件夹：用于存放影视的，sh脚本生成后续文件夹
@@ -71,7 +71,8 @@ version: "3"
 # 3、打开FinalShell软件
 # 4、进入root权限，输入 sudo -i 并输入飞牛密码，进入root权限
 # 5、cd /vol1/1000/Compose 进入Compose文件夹内
-# 6、输入 docker compose up -d 等待代码跑完即可
+# 6、拉取脚本
+# 7、运行脚本
 ####################################################################################
 
 ####################################################################################
@@ -89,7 +90,7 @@ version: "3"
 # 办公 7000 - 7060
 # 网络 8010 - 8010
 # 美化 9000 - 9000
-# 娱乐 10000 - 10001
+# 娱乐 10000 - 10013
 # 系统 11000 - 11010
 ####################################################################################
 
@@ -433,14 +434,23 @@ services:
     
 #######################  网络类  ############################ 
 
-  frpc: # 服务名称
-    image: snowdreamtech/frpc # 镜像名称（可更改冒号后版本）
-    container_name: frpc # 容器名称（可更改）
+  npc: # 服务名称
+    image: yisier1/npc:latest # 镜像名称（可更改冒号后版本）
+    container_name: npc # 容器名称（可更改）
     volumes: # 冒号前替换成自身路径即可（可更改）
-      - /vol1/1000/Frpc:/etc/frp
-    command: -c /etc/frp/frpc.ini # 启动命令
+      - /vol1/1000/Docker/npc:/conf
+    command: -server=47.243.80.27:8024 -vkey=自行填写密钥 -type=tcp # 启动命令
     restart: always # 总是启动容器
     network_mode: host # 网络本地
+
+  #frpc: # 服务名称
+  #  image: snowdreamtech/frpc # 镜像名称（可更改冒号后版本）
+  #  container_name: frpc # 容器名称（可更改）
+  #  volumes: # 冒号前替换成自身路径即可（可更改）
+  #    - /vol1/1000/Frpc:/etc/frp
+  #  command: -c /etc/frp/frpc.ini # 启动命令
+  #  restart: always # 总是启动容器
+  #  network_mode: host # 网络本地
 
   #v2raya: # 服务名称
   #  image: v2raya/v2raya:latest # 镜像名称（可更改冒号后版本）
@@ -485,6 +495,26 @@ services:
       - TZ=Asia/Shanghai
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
+  
+  #teamspeak:
+  #  image: teamspeak
+  #  restart: always
+  #  ports:
+  #    - 10010:9987/udp
+  #    - 10011:30033
+  #    - 10012:41144
+  #    - 10013:10011
+  #  volumes:
+  #    - /vol1/1000/Docker/teamspeak:/var/ts3server
+  #  environment:
+  #    TS3SERVER_DB_PLUGIN: ts3db_mariadb
+  #    TS3SERVER_DB_SQLCREATEPATH: create_mariadb
+  #    TS3SERVER_DB_HOST: db
+  #    TS3SERVER_DB_USER: root
+  #    TS3SERVER_DB_PASSWORD: password
+  #    TS3SERVER_DB_NAME: teamspeak
+  #    TS3SERVER_DB_WAITUNTILREADY: 30
+  #    TS3SERVER_LICENSE: accept
 
 #######################  系统类  ############################
 
@@ -511,3 +541,12 @@ services:
       - TZ=Asia/Shanghai
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
+ 
+  #db:
+  #  image: mariadb
+  #  restart: always
+  #  environment:
+  #    MYSQL_ROOT_PASSWORD: password
+  #    MYSQL_DATABASE: teamspeak
+  #  volumes:
+  #    - /vol1/1000/Docker/mysql:/var/lib/mysql
