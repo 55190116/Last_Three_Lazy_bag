@@ -24,11 +24,12 @@ services:
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
 
-  db:
-    image: mariadb
-    restart: always
+  mysql:
+    image: mariadb:latest
+    container_name: mysql # 容器名称（可更改）
+    volumes: # 冒号前替换成自身路径即可（可更改）
+      - /vol1/1000/Docker/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: teamspeak
-    volumes:
-      - /vol1/1000/Docker/mysql:/var/lib/mysql
+    restart: always # 总是启动容器
