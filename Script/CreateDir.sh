@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p /vol1/1000/{Downloads,Frpc,Music,Synchronous,Video,媒体元}
+mkdir -p /vol1/1000/{Downloads,Music,Synchronous,Video,媒体元}
 
 mkdir -p /vol1/1000/Docker/{alist,emulatorjs,homeassistant,iyuuplus,jackett,jellyfin,kkfileview,komga,moviepilot,music-tag-web,navidrome,pdftool,qbittorrent,qinglong,reader,siyuan-note-unlock,sun-panel,transmission,vertex,xiaoya,xunlei}
 
