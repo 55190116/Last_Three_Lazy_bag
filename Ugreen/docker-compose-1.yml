@@ -388,8 +388,8 @@ services:
     image: lscr.io/linuxserver/emulatorjs:latest # 镜像名称（可更改冒号后版本）
     container_name: emulatorjs # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 10001:3000
-      - 10000:80
+      - 10011:3000
+      - 10010:80
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /mnt/dm-1/.ugreen_nas/509155/Docker/emulatorjs/config:/config
       - /mnt/dm-1/.ugreen_nas/509155/Docker/emulatorjs/data:/data
@@ -404,10 +404,10 @@ services:
   #  image: teamspeak:latest # 镜像名称（可更改冒号后版本）
   #  container_name: teamspeak # 容器名称（可更改）
   #  ports: # 容器端口（可更改冒号前端口）
-  #    - 10010:9987/udp
-  #    - 10011:30033
-  #    - 10012:41144
-  #    - 10013:10011
+  #    - 10020:9987/udp
+  #    - 10021:30033
+  #    - 10022:41144
+  #    - 10023:10011
   #  volumes: # 冒号前替换成自身路径即可（可更改）
   #    - /mnt/dm-1/.ugreen_nas/509155/Docker/teamspeak:/var/ts3server
   #  environment:
