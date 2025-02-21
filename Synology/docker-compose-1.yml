@@ -298,8 +298,8 @@ services:
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /volume1/My/Docker/siyuan-note-unlock:/siyuan/workspace
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1026
+      - PGID=100
       - UMASK=022
       - TZ=Asia/Shanghai
       - LANG=zh_CN.UTF-8
