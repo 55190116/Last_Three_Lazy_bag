@@ -7,6 +7,9 @@ echo
 if [ "$user_password" = "$correct_password" ]; then
     echo "密码正确"
     echo "欢迎来到三人行懒人包安装脚本！"
+    echo "懒人包支持镜像源：https://docker.1ms.run"
+    echo "懒人包本地镜像包下载地址：https://pan.baidu.com/s/1C-CHLbQqcePxSYR0xlxLwQ?pwd=tksy"
+    echo "---------------------------------------- 博客地址：blog.010322.xyz -----------------------------------------------------------------"
     echo "请选择安装系统："
     echo "1. 飞牛系统"
     echo "2. 群晖系统"
