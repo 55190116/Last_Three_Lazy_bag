@@ -8,7 +8,7 @@ services:
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /var/run/docker.sock:/var/run/docker.sock
       - /mnt/dm-1/.ugreen_nas/509155/Docker/1panel:/opt/1panel
-      - /vo11/1000:/vol1/1000
+      - /mnt/dm-1/.ugreen_nas/509155/:/mnt/dm-1/.ugreen_nas/509155/
     environment:
       - TZ=Asia/Shanghai
       - PANEL_BASE_DIR=/opt/1panel
