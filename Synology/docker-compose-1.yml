@@ -432,7 +432,7 @@ services:
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /var/run/docker.sock:/var/run/docker.sock
       - /volume1/My/Docker/1panel:/opt/1panel
-      - /vo11/1000/:/vol1/1000/
+      - /volume1/My/:/volume1/My/
     environment:
       - TZ=Asia/Shanghai
       - PANEL_BASE_DIR=/opt/1panel
