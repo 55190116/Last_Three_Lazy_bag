@@ -3,6 +3,7 @@
 echo "飞牛路径示例：/vol*/1000/"
 echo "群晖路径示例：/volume*/My/ My：根路径名称"
 echo "绿联旧系统路径示例：/mnt/dm-*/.ugreen_nas/509155/ 509155：用户文件名"
+echo "绿联新系统路径示例：/volume*/@home/My/ My：根路径名称"
 echo "所有 * 均改为自己对应的数字"
 read -p "请输入替换后的新路径: " new_path
 
