@@ -95,7 +95,7 @@ if [ "$user_password" = "$correct_password" ]; then
             "ModifyDir.sh https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/ModifyDir.sh"
             "Remove.sh https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Remove.sh"
         )
-    elif [ "$version" = "绿联（新系统）系统" ]; then
+    elif [ "$version" = "绿联（新系统）" ]; then
         files=(
 	    "docker-compose-1.yml https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/UgreenNew/docker-compose-1.yml"
      	    "docker-compose-2.yml https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/UgreenNew/docker-compose-2.yml"
