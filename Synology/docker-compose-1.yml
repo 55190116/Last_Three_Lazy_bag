@@ -37,18 +37,30 @@ services:
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
 
-  jellyfin: # 服务名称
-    image: nyanmisaka/jellyfin:latest # 镜像名称（可更改冒号后版本）
-    container_name: jellyfin # 容器名称（可更改）
+  #jellyfin: # 服务名称
+  #  image: nyanmisaka/jellyfin:latest # 镜像名称（可更改冒号后版本）
+  #  container_name: jellyfin # 容器名称（可更改）
+  #  privileged: true # 配置最高权限
+  #  devices:
+  #   - /dev/dri:/dev/dri
+  #  ports: # 容器端口（可更改冒号前端口）
+  #    - 3010:8096
+  #  volumes: # 冒号前替换成自身路径即可（可更改）
+  #    - /volume1/My/Docker/jellyfin/config:/config
+  #    - /volume1/My/Docker/jellyfin/cache:/cache
+  #    - /volume1/My/Video:/video
+  #  restart: always # 总是启动容器
+  #  network_mode: bridge # 网络桥接
+
+  emby: # 服务名称
+    image: amilys/embyserver:latest # 镜像名称（可更改冒号后版本）
+    container_name: embyserver # 容器名称（可更改）
     privileged: true # 配置最高权限
-    devices:
-     - /dev/dri:/dev/dri
     ports: # 容器端口（可更改冒号前端口）
       - 3010:8096
     volumes: # 冒号前替换成自身路径即可（可更改）
-      - /volume1/My/Docker/jellyfin/config:/config
-      - /volume1/My/Docker/jellyfin/cache:/cache
-      - /volume1/My/Video:/video
+      - /volume1/My/Docker/emby/config:/config
+      - /volume1/My/Video:/data
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
 
@@ -61,8 +73,8 @@ services:
       - /volume1/My/Docker/qbittorrent:/config
       - /volume1/My/Video:/downloads
     environment: # 环境变量
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=Asia/Shanghai
       - WEBUI_PORT=3020
     restart: always # 总是启动容器
@@ -121,53 +133,78 @@ services:
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接  
   
-  jackett: # 服务名称
-    image: linuxserver/jackett:latest # 镜像名称（可更改冒号后版本）
-    container_name: jackett # 容器名称（可更改）
+  #jackett: # 服务名称
+  #  image: linuxserver/jackett:latest # 镜像名称（可更改冒号后版本）
+  #  container_name: jackett # 容器名称（可更改）
+  #  ports: # 容器端口（可更改冒号前端口）
+  #    - 3060:9117
+  #  volumes: # 冒号前替换成自身路径即可（可更改）
+  #    - /volume1/My/Docker/jackett/config:/config
+  #    - /volume1/My/Docker/jackett/downloads:/downloads
+  #  environment: # 环境变量
+  #    - PUID=0
+  #    - PGID=0
+  #    - TZ=Asia/Shanghai
+  #    - AUTO_UPDATE=false
+  #  restart: always # 总是启动容器
+  #  network_mode: bridge # 网络桥接
+
+  #alist-tvbox:
+  #  image: haroldli/xiaoya-tvbox:latest
+  #  container_name: alist-tvbox
+  #  ports:
+  #    - 3070:4567
+  #    - 3080:80
+  #  volumes: # 冒号前替换成自身路径即可（可更改）
+  #    - /volume1/My/Docker/xiaoya:/data
+  #  environment: # 环境变量
+  #    - ALIST_PORT=3080
+  #  restart: always # 总是启动容器
+  #  network_mode: bridge # 网络桥接
+
+  aipan: # 服务名称
+    image: fooololo/aipan-netdisk-search:latest # 镜像名称（可更改冒号后版本）
+    container_name: aipan # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 3060:9117
-    volumes: # 冒号前替换成自身路径即可（可更改）
-      - /volume1/My/Docker/jackett/config:/config
-      - /volume1/My/Docker/jackett/downloads:/downloads
-    environment: # 环境变量
-      - PUID=0
-      - PGID=0
-      - TZ=Asia/Shanghai
-      - AUTO_UPDATE=false
+      - 3060:3000
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
 
-  alist-tvbox:
-    image: haroldli/xiaoya-tvbox:latest
-    container_name: alist-tvbox
-    ports:
-      - 3070:4567
-      - 3080:80
-    volumes: # 冒号前替换成自身路径即可（可更改）
-      - /volume1/My/Docker/xiaoya:/data
-    environment: # 环境变量
-      - ALIST_PORT=3080
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+  #vertex:
+  #  image: lswl/vertex:latest
+  #  container_name: vertex
+  #  ports: # 容器端口（可更改冒号前端口）
+  #    - 3095:32110
+  #  volumes:
+  #    - /volume1/My/Docker/vertex:/vertex
+  #  environment:
+  #    - PORT=32110
+  #    - TZ=Asia/Shanghai
+  #  restart: always # 总是启动容器
+  #  network_mode: bridge # 网络桥接
 
-  aipan:
-    image: fooololo/aipan-netdisk-search:latest
-    container_name: aipan
-    ports:
-      - 3090:3000
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
-
-  vertex:
-    image: lswl/vertex:latest
-    container_name: vertex
+  iptv-api: # 服务名称
+    image: guovern/iptv-api:latest # 镜像名称（可更改冒号后版本）
+    container_name: iptv-api # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 3095:32110
-    volumes:
-      - /volume1/My/Docker/vertex:/vertex
-    environment:
-      - PORT=32110
-      - TZ=Asia/Shanghai
+      - 3070:8000
+    volumes: # 冒号前替换成自身路径即可（可更改）
+      - /volume1/My/Docker/iptv-api/config:/iptv-api/config
+      - /volume1/My/Docker/iptv-api/output:/iptv-api/output
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
+    
+  metatube: # 服务名称
+    image: metatube/metatube-server:latest # 镜像名称（可更改冒号后版本）
+    container_name: metatube # 容器名称（可更改）
+    ports: # 容器端口（可更改冒号前端口）
+      - 3080:8080
+    environment: # 环境变量
+      - PORT=8080
+      - DB_MAX_IDLE_CONNS=0
+      - DB_MAX_OPEN_CONNS=0
+      - DB_PREPARED_STMT=0
+      - DB_AUTO_MIGRATE=0
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
 
@@ -201,7 +238,7 @@ services:
     image: hectorqin/reader:latest # 镜像名称（可更改冒号后版本）
     container_name: reader # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 5010:8080
+      - 5000:8080
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /volume1/My/Docker/reader/log:/log
       - /volume1/My/Docker/reader/storage:/storage
@@ -218,9 +255,9 @@ services:
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /volume1/My/Docker/komga/config:/config
       - /volume1/My/Docker/komga/data:/data
-    environment:
-      - PUID=0
-      - PGID=0
+    environment: # 环境变量
+      - PUID=1000
+      - PGID=1000
       - TZ=Asia/Shanghai
     network_mode: bridge # 总是启动容器
     restart: always # 网络桥接
@@ -298,7 +335,7 @@ services:
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /volume1/My/Docker/siyuan-note-unlock:/siyuan/workspace
     environment:
-      - PUID=1026
+      - PUID=1000
       - PGID=100
       - UMASK=022
       - TZ=Asia/Shanghai
@@ -338,14 +375,26 @@ services:
     
 #######################  网络类  ############################ 
 
-  npc: # 服务名称
-    image: yisier1/npc:latest # 镜像名称（可更改冒号后版本）
-    container_name: npc # 容器名称（可更改）
+  firefox: # 服务名称
+    image: jlesage/firefox:latest # 镜像名称（可更改冒号后版本）
+    container_name: firefox # 容器名称（可更改）
+    ports: # 容器端口（可更改冒号前端口）
+      - 8010:5800
     volumes: # 冒号前替换成自身路径即可（可更改）
-      - /volume1/My/Docker/npc:/conf
-    command: -server=47.243.80.27:8024 -vkey=自行填写密钥 -type=tcp # 启动命令
+      - /volume1/My/Docker/firefox/config:/config:rw
+      - /volume1/My/Docker/firefox/fonts:/usr/share/fonts
+      - /volume1/My/Downloads:/config/downloads
     restart: always # 总是启动容器
-    network_mode: host # 网络本地
+    network_mode: bridge # 网络桥接
+
+  #npc: # 服务名称
+  #  image: yisier1/npc:latest # 镜像名称（可更改冒号后版本）
+  #  container_name: npc # 容器名称（可更改）
+  #  volumes: # 冒号前替换成自身路径即可（可更改）
+  #    - /volume1/My/Docker/npc:/conf
+  #  command: -server=47.243.80.27:8024 -vkey=自行填写密钥 -type=tcp # 启动命令
+  #  restart: always # 总是启动容器
+  #  network_mode: host # 网络本地
 
   #frpc: # 服务名称
   #  image: snowdreamtech/frpc # 镜像名称（可更改冒号后版本）
@@ -361,7 +410,7 @@ services:
   #  container_name: v2raya # 容器名称（可更改）
   #  privileged: true
   #  ports: # 容器端口（可更改冒号前端口）
-  #    - 8010:2017
+  #    - 8020:2017
   #  volumes: # 冒号前替换成自身路径即可（可更改）
   #    - /volume1/My/Docker/v2raya:/etc/v2raya
   #  environment: # 环境变量
@@ -384,21 +433,21 @@ services:
 
 #######################  娱乐类  ############################
 
-  emulatorjs: # 服务名称
-    image: lscr.io/linuxserver/emulatorjs:latest # 镜像名称（可更改冒号后版本）
-    container_name: emulatorjs # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 10001:3000
-      - 10000:80
-    volumes: # 冒号前替换成自身路径即可（可更改）
-      - /volume1/My/Docker/emulatorjs/config:/config
-      - /volume1/My/Docker/emulatorjs/data:/data
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Asia/Shanghai
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+  #emulatorjs: # 服务名称
+  #  image: lscr.io/linuxserver/emulatorjs:latest # 镜像名称（可更改冒号后版本）
+  #  container_name: emulatorjs # 容器名称（可更改）
+  #  ports: # 容器端口（可更改冒号前端口）
+  #    - 10001:3000
+  #    - 10000:80
+  #  volumes: # 冒号前替换成自身路径即可（可更改）
+  #    - /volume1/My/Docker/emulatorjs/config:/config
+  #    - /volume1/My/Docker/emulatorjs/data:/data
+  #  environment:
+  #    - PUID=1000
+  #    - PGID=1000
+  #    - TZ=Asia/Shanghai
+  #  restart: always # 总是启动容器
+  #  network_mode: bridge # 网络桥接
   
   #teamspeak: # 服务名称
   #  image: teamspeak:latest # 镜像名称（可更改冒号后版本）
@@ -455,17 +504,17 @@ services:
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
     
-  homeassistant: # 服务名称
-    image: homeassistant/home-assistant:latest # 镜像名称（可更改冒号后版本）
-    container_name: homeassistant # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 11020:8123
-    volumes: # 冒号前替换成自身路径即可（可更改）
-      - /volume1/My/Docker/homeassistant:/config
-    environment:
-      - TZ=Asia/Shanghai
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+  #homeassistant: # 服务名称
+  #  image: homeassistant/home-assistant:latest # 镜像名称（可更改冒号后版本）
+  #  container_name: homeassistant # 容器名称（可更改）
+  #  ports: # 容器端口（可更改冒号前端口）
+  #    - 11020:8123
+  #  volumes: # 冒号前替换成自身路径即可（可更改）
+  #    - /volume1/My/Docker/homeassistant:/config
+  #  environment:
+  #    - TZ=Asia/Shanghai
+  #  restart: always # 总是启动容器
+  #  network_mode: bridge # 网络桥接
  
   #mysql:
   #  image: mariadb:latest
