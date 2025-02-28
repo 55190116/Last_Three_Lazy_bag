@@ -105,6 +105,11 @@ wget -O Last_Three_Lazy_bag.sh.enc https://gh.llkk.cc/https://raw.githubusercont
 ```
 
 * 拉取完成对脚本进行解密，解密密码联系作者
+
+```
+openssl enc -d -aes-256-cbc -salt -pbkdf2 -iter 100000 -in Last_Three_Lazy_bag.sh.enc -out Last_Three_Lazy_bag.sh
+```
+
 * 解密完成后，输入 `bash Last_Three_Lazy_bag.sh` 运行脚本
 * 按照提示输入数字即可完成懒人包的安装
 
