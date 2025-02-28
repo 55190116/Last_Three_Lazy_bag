@@ -92,7 +92,7 @@
 # 小说 5000 - 5000
 # 漫画 6010 - 6010
 # 办公 7000 - 7060
-# 网络 8010 - 8010
+# 网络 8010 - 8020
 # 美化 9000 - 9000
 # 娱乐 10000 - 10013
 # 系统 11000 - 11020
@@ -479,7 +479,7 @@ services:
     image: jlesage/firefox:latest # 镜像名称（可更改冒号后版本）
     container_name: firefox # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 8040:5800
+      - 8010:5800
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/firefox/config:/config:rw
       - /vol1/1000/Docker/firefox/fonts:/usr/share/fonts
@@ -510,7 +510,7 @@ services:
   #  container_name: v2raya # 容器名称（可更改）
   #  privileged: true
   #  ports: # 容器端口（可更改冒号前端口）
-  #    - 8010:2017
+  #    - 8020:2017
   #  volumes: # 冒号前替换成自身路径即可（可更改）
   #    - /vol1/1000/Docker/v2raya:/etc/v2raya
   #  environment: # 环境变量
