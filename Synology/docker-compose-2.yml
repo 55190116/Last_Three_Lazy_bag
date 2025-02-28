@@ -1,7 +1,5 @@
 services:
 
-#######################  影视类  ############################
-
   #nastools: # 服务名称
   #  image: nastools/nas-tools:latest # 镜像名称（可更改冒号后版本）
   #  container_name: nastools # 容器名称（可更改）
