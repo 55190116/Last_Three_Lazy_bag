@@ -1,3 +1,103 @@
+####################################################################################
+# 单独启动容器
+# version: "3"
+# services: # 定义服务
+#   wps-office: # 服务名称
+#    image: linuxserver/wps-office:chinese # 镜像名称（可更改冒号后版本）
+#    container_name: wps-office # 容器名称（可更改）
+#    ports: # 容器端口（可更改冒号前端口）
+#     - 3030:3000
+#     - 3031:3001
+#    volumes: # 冒号前替换成自身路径即可（可更改）
+#     - /vol1/1000/Docker/wps-office/config:/config
+#     - /vol1/1000/Docker/wps-office/Desktop:/config/Desktop
+#     - /vol1/1000/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
+#    environment: # 环境变量
+#     - PUID=0
+#     - PGID=0
+#     - TZ=Asia/Shanghai
+#     - CUSTOM_USER=admin
+#     - PASSWORD=admin
+#    restart: always # 总是启动容器
+#    network_mode: bridge # 网络桥接
+####################################################################################
+
+####################################################################################
+# nastools       是否在包内：No  用户名：admin 密码：password
+# moviepilot     是否在包内：Yes 用户名：admin 密码：运行日志中
+# jellyfin       是否在包内：No  用户名：自定义 密码：自定义
+# emby           是否在包内：Yes 用户名：自定义 密码：自定义
+# qbaittorrent   是否在包内：Yes 用户名：admin 密码：运行日志中
+# transmission   是否在包内：Yes 用户名：root  密码：root
+# iyuuplus       是否在包内：Yes 用户名：自定义 密码：自定义
+# xunlei         是否在包内：Yes 用户名：admin 密码：admin
+# jackett        是否在包内：No  用户名：无    密码：无
+# apipan         是否在包内：Yes 用户名：无    密码：无
+# vertex         是否在包内：No  用户名：admin 密码：data目录下查看
+# iptv-api       是否在包内：Yes 用户名：无    密码：无
+# metatube       是否在包内：No   用户名：无    密码：无
+# navidrome      是否在包内：Yes 用户名：自定义 密码：自定义
+# music-tag      是否在包内：Yes 用户名：admin 密码：admin
+# reader         是否在包内：Yes 用户名：自定义 密码：自定义
+# komga          是否在包内：Yes 用户名：自定义 密码：自定义
+# wps-office     是否在包内：No  用户名：admin 密码：admin
+# verysync       是否在包内：Yes 用户名：自定义 密码：自定义
+# pdftool        是否在包内：Yes 用户名：无    密码：无
+# kkfileview     是否在包内：Yes 用户名：无    密码：无
+# siyuan         是否在包内：Yes 用户名：无    密码：无
+# alist          是否在包内：Yes 用户名：admin 密码：运行日志中
+# firefox        是否在包内：Yes 用户名：无    密码：无
+# npc            是否在包内：No  用户名：无    密码：无
+# frpc           是否在包内：No  用户名：无    密码：无
+# v2raya         是否在包内：No  用户名：自定义 密码：自定义
+# sun-panel      是否在包内：Yes 用户名：admin@sun.cc 密码：12345678
+# emulatorjs     是否在包内：No  用户名：无    密码：无
+# teamspeak      是否在包内：No  用户名：无    密码：无
+# 1panel         是否在包内：Yes 用户名：自定义 密码：自定义
+# qinglong       是否在包内：Yes 用户名：自定义 密码：自定义
+# homeassistant  是否在包内：No  用户名：自定义 密码：自定义
+# mysql          是否在包内：No  用户名：无    密码：无
+####################################################################################
+
+####################################################################################
+# Compose文件夹：用于存放懒人包配置文件的
+# Docker文件夹：用于存放容器的
+# Downloads：用于迅雷下载文件夹
+# Music文件夹：用于存放音乐的
+# Synchronous：用于同步文件夹
+# Video文件夹：用于存放影视的，sh脚本生成后续文件夹
+####################################################################################
+
+####################################################################################
+# 如何使用懒人包
+# 1、创建好Docker存储位置
+# 2、创建Compose文件夹
+# 3、打开FinalShell软件
+# 4、进入root权限，输入 sudo -i 并输入飞牛密码，进入root权限
+# 5、cd /vol1/1000/Compose 进入Compose文件夹内
+# 6、拉取脚本
+# 7、运行脚本
+####################################################################################
+
+####################################################################################
+# docker stop $(docker ps -aq) 停止所有容器
+# docker rm $(docker ps -aq) 删除所有容器
+# docker rmi $(docker images -a -q) 删除所有镜像
+####################################################################################
+
+####################################################################################
+# 本懒人包端口配置
+# 影视 3000 - 3095
+# 音乐 4000 - 4010
+# 小说 5000 - 5000
+# 漫画 6010 - 6010
+# 办公 7000 - 7060
+# 网络 8010 - 8020
+# 美化 9000 - 9000
+# 娱乐 10000 - 10013
+# 系统 11000 - 11020
+####################################################################################
+
 services:
 
 #######################  影视类  ############################
@@ -22,7 +122,7 @@ services:
     image: jxxghp/moviepilot-v2:latest # 镜像名称（可更改冒号后版本）
     container_name: moviepilot # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 3000:3000
+      - 3005:3000
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Video:/downloads
       - /vol1/1000/Docker/moviepilot:/config
@@ -57,7 +157,7 @@ services:
     container_name: embyserver # 容器名称（可更改）
     privileged: true # 配置最高权限
     ports: # 容器端口（可更改冒号前端口）
-      - 3010:8096
+      - 3015:8096
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/emby/config:/config
       - /vol1/1000/Video:/data
@@ -84,7 +184,7 @@ services:
     image: linuxserver/transmission:4.0.5 # 镜像名称（可更改冒号后版本）
     container_name: transmission # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 3030:9091
+      - 3025:9091
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/transmission:/config
       - /vol1/1000/Video:/downloads
@@ -102,7 +202,7 @@ services:
     image: iyuucn/iyuuplus:latest # 镜像名称（可更改冒号后版本）
     container_name: iyuuplus # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 3040:8780
+      - 3030:8780
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/iyuuplus/iyuu:/iyuu
       - /vol1/1000/Docker/iyuuplus/data:/data
@@ -120,7 +220,7 @@ services:
     container_name: xunlei # 容器名称（可更改）
     privileged: true # 配置最高权限
     ports: # 容器端口（可更改冒号前端口）
-      - 3050:2345
+      - 3035:2345
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/xunlei:/xunlei/data
       - /vol1/1000/Downloads:/xunlei/downloads
@@ -137,7 +237,7 @@ services:
   #  image: linuxserver/jackett:latest # 镜像名称（可更改冒号后版本）
   #  container_name: jackett # 容器名称（可更改）
   #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3060:9117
+  #    - 3040:9117
   #  volumes: # 冒号前替换成自身路径即可（可更改）
   #    - /vol1/1000/Docker/jackett/config:/config
   #    - /vol1/1000/Docker/jackett/downloads:/downloads
@@ -149,24 +249,11 @@ services:
   #  restart: always # 总是启动容器
   #  network_mode: bridge # 网络桥接
 
-  #alist-tvbox:
-  #  image: haroldli/xiaoya-tvbox:latest
-  #  container_name: alist-tvbox
-  #  ports:
-  #    - 3070:4567
-  #    - 3080:80
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/xiaoya:/data
-  #  environment: # 环境变量
-  #    - ALIST_PORT=3080
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
-
   aipan: # 服务名称
     image: fooololo/aipan-netdisk-search:latest # 镜像名称（可更改冒号后版本）
     container_name: aipan # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 3060:3000
+      - 3045:3000
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
 
@@ -174,7 +261,7 @@ services:
   #  image: lswl/vertex:latest
   #  container_name: vertex
   #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3095:32110
+  #    - 3050:32110
   #  volumes:
   #    - /vol1/1000/Docker/vertex:/vertex
   #  environment:
@@ -187,26 +274,26 @@ services:
     image: guovern/iptv-api:latest # 镜像名称（可更改冒号后版本）
     container_name: iptv-api # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 3070:8000
+      - 3055:8000
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/iptv-api/config:/iptv-api/config
       - /vol1/1000/Docker/iptv-api/output:/iptv-api/output
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
     
-  metatube: # 服务名称
-    image: metatube/metatube-server:latest # 镜像名称（可更改冒号后版本）
-    container_name: metatube # 容器名称（可更改）
-    ports: # 容器端口（可更改冒号前端口）
-      - 3080:8080
-    environment: # 环境变量
-      - PORT=8080
-      - DB_MAX_IDLE_CONNS=0
-      - DB_MAX_OPEN_CONNS=0
-      - DB_PREPARED_STMT=0
-      - DB_AUTO_MIGRATE=0
-    restart: always # 总是启动容器
-    network_mode: bridge # 网络桥接
+  #metatube: # 服务名称
+  #  image: metatube/metatube-server:latest # 镜像名称（可更改冒号后版本）
+  #  container_name: metatube # 容器名称（可更改）
+  #  ports: # 容器端口（可更改冒号前端口）
+  #    - 3060:8080
+  #  environment: # 环境变量
+  #    - PORT=8080
+  #    - DB_MAX_IDLE_CONNS=0
+  #    - DB_MAX_OPEN_CONNS=0
+  #    - DB_PREPARED_STMT=0
+  #    - DB_AUTO_MIGRATE=0
+  #  restart: always # 总是启动容器
+  #  network_mode: bridge # 网络桥接
 
 #######################  音乐类  ############################
 
@@ -293,17 +380,19 @@ services:
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
     
-  stirling-pdf: # 服务名称
-    image: frooodle/s-pdf:latest # 镜像名称（可更改冒号后版本）
+  stirling-pdf:
+    image: stirlingtools/stirling-pdf:latest # 镜像名称（可更改冒号后版本）
     container_name: pdftool # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 7020:8080
+      - 7030:8080
     volumes: # 冒号前替换成自身路径即可（可更改）
-      - /vol1/1000/Docker/pdftool/tessdata:/usr/share/tessdata
-      - /vol1/1000/Docker/pdftool/configs:/configs
-    environment:
+      - /vol1/1000/Docker/pdftool/trainingData:/usr/share/tessdata
+      - /vol1/1000/Docker/pdftool/extraConfigs:/configs
+      - /vol1/1000/Docker/pdftool/customFiles:/customFiles/
+      - /vol1/1000/Docker/pdftool/logs:/logs/
+      - /vol1/1000/Docker/pdftool/pipeline:/pipeline/
+    environment: # 环境变量
       - DOCKER_ENABLE_SECURITY=false
-      - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
       - LANGS=en_GB
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
@@ -315,7 +404,7 @@ services:
     - 7030:8012
     volumes: # 冒号前替换成自身路径即可（可更改）
        - /vol1/1000/Docker/kkfileview:/opt/kkFileView-4.4.0
-    environment: 
+    environment: # 环境变量
       - KK_OFFICE_PREVIEW_TYPE=pdf
       - KK_OFFICE_PREVIEW_SWITCH_DISABLED=true
       - KK_PDF_DOWNLOAD_DISABLE=true
