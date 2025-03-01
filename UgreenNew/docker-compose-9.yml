@@ -3,9 +3,10 @@ services:
   emulatorjs: # 服务名称
     image: lscr.io/linuxserver/emulatorjs:latest # 镜像名称（可更改冒号后版本）
     container_name: emulatorjs # 容器名称（可更改）
+    privileged: true # 配置最高权限
     ports: # 容器端口（可更改冒号前端口）
-      - 10011:3000
-      - 10010:80
+      - 10001:3000
+      - 10000:80
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /volume1/@home/Testroot/Docker/emulatorjs/config:/config
       - /volume1/@home/Testroot/Docker/emulatorjs/data:/data
@@ -15,15 +16,15 @@ services:
       - TZ=Asia/Shanghai
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
-  
+
   teamspeak: # 服务名称
     image: teamspeak:latest # 镜像名称（可更改冒号后版本）
     container_name: teamspeak # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 10020:9987/udp
-      - 10021:30033
-      - 10022:41144
-      - 10023:10011
+      - 10010:9987/udp
+      - 10011:30033
+      - 10012:41144
+      - 10013:10011
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /volume1/@home/Testroot/Docker/teamspeak:/var/ts3server
     environment:
