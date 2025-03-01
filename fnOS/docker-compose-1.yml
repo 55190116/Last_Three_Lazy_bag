@@ -384,7 +384,7 @@ services:
     image: stirlingtools/stirling-pdf:latest # 镜像名称（可更改冒号后版本）
     container_name: pdftool # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 7030:8080
+      - 7020:8080
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/pdftool/trainingData:/usr/share/tessdata
       - /vol1/1000/Docker/pdftool/extraConfigs:/configs
