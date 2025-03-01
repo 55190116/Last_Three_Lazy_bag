@@ -2,7 +2,7 @@
 
 mkdir -p /vol1/1000/{Downloads,Music,Synchronous,Video,媒体元}
 
-mkdir -p /vol1/1000/Docker/{alist,emulatorjs,homeassistant,iyuuplus,jackett,jellyfin,kkfileview,komga,moviepilot,music-tag-web,navidrome,pdftool,qbittorrent,qinglong,reader,siyuan-note-unlock,sun-panel,transmission,vertex,xunlei,npc,1panel,emby,iptv-api,firefox}
+mkdir -p /vol1/1000/Docker/{nastools,moviepilot,jellyfin,emby,qbittorrent,transmission,iyuuplus,xunlei,jackett,vertex,iptv-api,navidrome,music-tag-web,reader,komga,wps-office,pdftool,kkfileview,siyuan-note-unlock,alist,firefox,npc,v2raya,sun-panel,emulatorjs,teamspeak,1panel,qinglong,homeassistant,mysql}
 
 mkdir -p /vol1/1000/Video/Link/movie /vol1/1000/Video/Link/tv /vol1/1000/Video/movie /vol1/1000/Video/tv /vol1/1000/Video/MakeTorrent
 
@@ -22,17 +22,17 @@ create_subdirectories() {
 }
 
 declare -A dir_structure=(
-    ["/vol1/1000/Docker/jellyfin"]="cache config"
-    ["/vol1/1000/Docker/iyuuplus"]="data iyuu"
+    ["/vol1/1000/Docker/jellyfin"]="config cache"
+    ["/vol1/1000/Docker/emby"]="config"
+    ["/vol1/1000/Docker/iyuuplus"]="iyuu data"
     ["/vol1/1000/Docker/jackett"]="config downloads"
+    ["/vol1/1000/Docker/iptv-api"]="config output"
     ["/vol1/1000/Docker/reader"]="log storage"
     ["/vol1/1000/Docker/komga"]="config data"
-    ["/vol1/1000/Docker/pdftool"]="configs tessdata"
-    ["/vol1/1000/Docker/emulatorjs"]="config data"
-    ["/vol1/1000/Docker/transmission"]="webui"
-    ["/vol1/1000/Docker/emby"]="config"
-    ["/vol1/1000/Docker/iptv-api"]="config output"
+    ["/vol1/1000/Docker/wps-office"]="config Desktop"
+    ["/vol1/1000/Docker/pdftool"]="trainingData extraConfigs customFiles logs pipeline"
     ["/vol1/1000/Docker/firefox"]="config fonts"
+    ["/vol1/1000/Docker/emulatorjs"]="config data"
 )
 
 for parent_dir in "${!dir_structure[@]}"; do
