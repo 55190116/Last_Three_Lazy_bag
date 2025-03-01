@@ -4,7 +4,7 @@ services:
     image: hectorqin/reader:latest # 镜像名称（可更改冒号后版本）
     container_name: reader # 容器名称（可更改）
     ports: # 容器端口（可更改冒号前端口）
-      - 5000:8080
+      - 5010:8080
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /volume1/My/Docker/reader/log:/log
       - /volume1/My/Docker/reader/storage:/storage
