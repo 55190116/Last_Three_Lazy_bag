@@ -106,8 +106,9 @@ services:
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /volume1/My/Docker/iyuuplus/iyuu:/iyuu
       - /volume1/My/Docker/iyuuplus/data:/data
-      - /volume1/My/Docker/qbittorrent/qBittorrent/BT_backup:/qb
-      - /volume1/My/Docker/transmission/torrents:/tr
+  # 需要自行将此配置注解去掉适配种子文件夹
+  #    - /volume1/My/Docker/qbittorrent/qBittorrent/BT_backup:/qb
+  #    - /volume1/My/Docker/transmission/torrents:/tr
     environment: # 环境变量
       - PUID=0
       - PGID=0
