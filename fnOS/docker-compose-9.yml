@@ -27,13 +27,13 @@ services:
     volumes: # 冒号前替换成自身路径即可（可更改）
       - /vol1/1000/Docker/teamspeak:/var/ts3server
     environment:
-      TS3SERVER_DB_PLUGIN: ts3db_mariadb
-      TS3SERVER_DB_SQLCREATEPATH: create_mariadb
-      TS3SERVER_DB_HOST: db
-      TS3SERVER_DB_USER: root
-      TS3SERVER_DB_PASSWORD: password
-      TS3SERVER_DB_NAME: teamspeak
-      TS3SERVER_DB_WAITUNTILREADY: 30
-      TS3SERVER_LICENSE: accept
+      - TS3SERVER_DB_PLUGIN: ts3db_mariadb
+      - TS3SERVER_DB_SQLCREATEPATH: create_mariadb
+      - TS3SERVER_DB_HOST: db
+      - TS3SERVER_DB_USER: root
+      - TS3SERVER_DB_PASSWORD: password
+      - TS3SERVER_DB_NAME: teamspeak
+      - TS3SERVER_DB_WAITUNTILREADY: 30
+      - TS3SERVER_LICENSE: accept
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
