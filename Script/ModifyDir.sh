@@ -64,3 +64,12 @@ fi
 
 echo -e "\n替换完成！"
 echo "原文件已备份为 .bak 后缀文件"
+
+# 询问是否删除备份文件
+read -p "是否删除备份文件？(y/n) " delete_confirm
+if [[ $delete_confirm == [yY] ]]; then
+  rm -f *.bak
+  echo "备份文件已删除"
+else
+  echo "备份文件将保留"
+fi
