@@ -1,20 +1,20 @@
 services:
 
-  #nastools: # 服务名称
-  #  image: nastools/nas-tools:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: nastools # 容器名称（可更改）
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3000:3000 
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/nastools:/config
-  #    - /vol1/1000/Video:/downloads
-  #  environment: # 环境变量
-  #    - PUID=0
-  #    - PGID=0
-  #    - TZ=Asia/Shanghai
-  #    - UMASK=022
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+  nastools: # 服务名称
+    image: nastools/nas-tools:latest # 镜像名称（可更改冒号后版本）
+    container_name: nastools # 容器名称（可更改）
+    ports: # 容器端口（可更改冒号前端口）
+      - 3000:3000 
+    volumes: # 冒号前替换成自身路径即可（可更改）
+      - /vol1/1000/Docker/nastools:/config
+      - /vol1/1000/Video:/downloads
+    environment: # 环境变量
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - UMASK=022
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
 
   moviepilot: # 服务名称
     image: jxxghp/moviepilot-v2:latest # 镜像名称（可更改冒号后版本）
@@ -35,20 +35,20 @@ services:
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
 
-  #jellyfin: # 服务名称
-  #  image: nyanmisaka/jellyfin:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: jellyfin # 容器名称（可更改）
-  #  privileged: true # 配置最高权限
-  #  devices:
-  #   - /dev/dri:/dev/dri
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3010:8096
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/jellyfin/config:/config
-  #    - /vol1/1000/Docker/jellyfin/cache:/cache
-  #    - /vol1/1000/Video:/video
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+  jellyfin: # 服务名称
+    image: nyanmisaka/jellyfin:latest # 镜像名称（可更改冒号后版本）
+    container_name: jellyfin # 容器名称（可更改）
+    privileged: true # 配置最高权限
+    devices:
+     - /dev/dri:/dev/dri
+    ports: # 容器端口（可更改冒号前端口）
+      - 3010:8096
+    volumes: # 冒号前替换成自身路径即可（可更改）
+      - /vol1/1000/Docker/jellyfin/config:/config
+      - /vol1/1000/Docker/jellyfin/cache:/cache
+      - /vol1/1000/Video:/video
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
 
   emby: # 服务名称
     image: amilys/embyserver:latest # 镜像名称（可更改冒号后版本）
@@ -131,21 +131,21 @@ services:
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接  
   
-  #jackett: # 服务名称
-  #  image: linuxserver/jackett:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: jackett # 容器名称（可更改）
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3040:9117
-  #  volumes: # 冒号前替换成自身路径即可（可更改）
-  #    - /vol1/1000/Docker/jackett/config:/config
-  #    - /vol1/1000/Docker/jackett/downloads:/downloads
-  #  environment: # 环境变量
-  #    - PUID=0
-  #    - PGID=0
-  #    - TZ=Asia/Shanghai
-  #    - AUTO_UPDATE=false
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+  jackett: # 服务名称
+    image: linuxserver/jackett:latest # 镜像名称（可更改冒号后版本）
+    container_name: jackett # 容器名称（可更改）
+    ports: # 容器端口（可更改冒号前端口）
+      - 3040:9117
+    volumes: # 冒号前替换成自身路径即可（可更改）
+      - /vol1/1000/Docker/jackett/config:/config
+      - /vol1/1000/Docker/jackett/downloads:/downloads
+    environment: # 环境变量
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - AUTO_UPDATE=false
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
 
   aipan: # 服务名称
     image: fooololo/aipan-netdisk-search:latest # 镜像名称（可更改冒号后版本）
@@ -155,18 +155,18 @@ services:
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
 
-  #vertex:
-  #  image: lswl/vertex:latest
-  #  container_name: vertex
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3050:32110
-  #  volumes:
-  #    - /vol1/1000/Docker/vertex:/vertex
-  #  environment:
-  #    - PORT=32110
-  #    - TZ=Asia/Shanghai
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+  vertex:
+    image: lswl/vertex:latest
+    container_name: vertex
+    ports: # 容器端口（可更改冒号前端口）
+      - 3050:32110
+    volumes:
+      - /vol1/1000/Docker/vertex:/vertex
+    environment:
+      - PORT=32110
+      - TZ=Asia/Shanghai
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
 
   iptv-api: # 服务名称
     image: guovern/iptv-api:latest # 镜像名称（可更改冒号后版本）
@@ -179,16 +179,16 @@ services:
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
     
-  #metatube: # 服务名称
-  #  image: metatube/metatube-server:latest # 镜像名称（可更改冒号后版本）
-  #  container_name: metatube # 容器名称（可更改）
-  #  ports: # 容器端口（可更改冒号前端口）
-  #    - 3060:8080
-  #  environment: # 环境变量
-  #    - PORT=8080
-  #    - DB_MAX_IDLE_CONNS=0
-  #    - DB_MAX_OPEN_CONNS=0
-  #    - DB_PREPARED_STMT=0
-  #    - DB_AUTO_MIGRATE=0
-  #  restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+  metatube: # 服务名称
+    image: metatube/metatube-server:latest # 镜像名称（可更改冒号后版本）
+    container_name: metatube # 容器名称（可更改）
+    ports: # 容器端口（可更改冒号前端口）
+      - 3060:8080
+    environment: # 环境变量
+      - PORT=8080
+      - DB_MAX_IDLE_CONNS=0
+      - DB_MAX_OPEN_CONNS=0
+      - DB_PREPARED_STMT=0
+      - DB_AUTO_MIGRATE=0
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
