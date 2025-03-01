@@ -1,26 +1,15 @@
 #!/bin/bash
 
+# 创建基础目录
 mkdir -p /vol1/1000/{Downloads,Music,Synchronous,Video,媒体元}
 
-mkdir -p /vol1/1000/Docker/{nastools,moviepilot,jellyfin,emby,qbittorrent,transmission,iyuuplus,xunlei,jackett,vertex,iptv-api,navidrome,music-tag-web,reader,komga,wps-office,pdftool,kkfileview,siyuan-note-unlock,alist,firefox,npc,v2raya,sun-panel,emulatorjs,teamspeak,1panel,qinglong,homeassistant,mysql}
+# 创建 Docker 相关目录
+mkdir -p /vol1/1000/Docker/{nastools,moviepilot,jellyfin,emby,qbittorrent,transmission,iyuuplus,xunlei,jackett,vertex,iptv - api,navidrome,music - tag - web,reader,komga,wps - office,pdftool,kkfileview,siyuan - note - unlock,alist,firefox,npc,v2raya,sun - panel,emulatorjs,teamspeak,1panel,qinglong,homeassistant,mysql}
 
-mkdir -p /vol1/1000/Video/Link/movie /vol1/1000/Video/Link/tv /vol1/1000/Video/movie /vol1/1000/Video/tv /vol1/1000/Video/MakeTorrent
+# 创建 Video 相关子目录
+mkdir -p /vol1/1000/Video/{Link/{movie,tv},movie,tv,MakeTorrent}
 
-create_subdirectories() {
-    local parent_dir="$1"
-    shift
-    local sub_dirs=("$@")
-    for sub_dir in "${sub_dirs[@]}"; do
-        local full_path="${parent_dir}/${sub_dir}"
-        mkdir -p "$full_path"
-        if [ $? -ne 0 ]; then
-            echo "创建目录 $full_path 失败" >&2
-            return 1
-        fi
-    done
-    return 0
-}
-
+# 定义目录结构关联数组
 declare -A dir_structure=(
     ["/vol1/1000/Docker/jellyfin"]="config cache"
     ["/vol1/1000/Docker/emby"]="config"
@@ -35,9 +24,16 @@ declare -A dir_structure=(
     ["/vol1/1000/Docker/emulatorjs"]="config data"
 )
 
-for parent_dir in "${!dir_structure[@]}"; do
-    sub_dirs=(${dir_structure[$parent_dir]})
-    if ! create_subdirectories "$parent_dir" "${sub_dirs[@]}"; then
-        exit 1
-    fi
+# 遍历目录结构关联数组，创建子目录
+for parent in "${!dir_structure[@]}"; do
+    for sub in ${dir_structure[$parent]}; do
+        path="$parent/$sub"
+        if ! mkdir -p "$path"; then
+            echo "创建目录 $path 失败" >&2
+            exit 1
+        fi
+    done
 done
+
+# 提示创建完成
+echo "所有目录创建完成！"
