@@ -43,4 +43,4 @@ services:
     environment: # 环境变量
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     restart: always # 总是启动容器
-  #  network_mode: bridge # 网络桥接
+    network_mode: bridge # 网络桥接
