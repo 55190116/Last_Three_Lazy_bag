@@ -41,18 +41,22 @@ done
 
 # 停止容器
 for container_id in $all_containers; do
+    container_name=$(docker inspect --format='{{.Name}}' "$container_id" | sed 's/^\///')
     if docker stop "$container_id" > /dev/null 2>&1; then
-        echo "容器 $container_id 已停止。"
+        echo "容器 $container_name ($container_id) 已停止。"
     else
-        echo "停止容器 $container_id 失败。"
+        error_info=$(docker stop "$container_id" 2>&1)
+        echo "停止容器 $container_name ($container_id) 失败: $error_info"
     fi
 done
 
 # 删除容器
 for container_id in $all_containers; do
+    container_name=$(docker inspect --format='{{.Name}}' "$container_id" | sed 's/^\///')
     if docker rm "$container_id" > /dev/null 2>&1; then
-        echo "容器 $container_id 已删除。"
+        echo "容器 $container_name ($container_id) 已删除。"
     else
-        echo "删除容器 $container_id 失败。"
+        error_info=$(docker rm "$container_id" 2>&1)
+        echo "删除容器 $container_name ($container_id) 失败: $error_info"
     fi
 done
