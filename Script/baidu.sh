@@ -109,7 +109,7 @@ execute_command "unzip $DOWNLOADED_FILE -d $SAVE_PATH" "解压 $DOWNLOADED_FILE 
 echo "文件 $DOWNLOADED_FILE 解压成功，已解压到 $SAVE_PATH"
 
 # 定义解压后路径
-EXTRACT_DIR="$SAVE_PATH/Images/Images"
+EXTRACT_DIR="$SAVE_PATH/Images/"
 
 # 检查解压后路径是否存在
 if [ ! -d "$EXTRACT_DIR" ]; then
