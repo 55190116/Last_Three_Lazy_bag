@@ -22,6 +22,7 @@ folders_to_delete=(
     "Compose"
     "Downloads"
     "Music"
+    "Docker"
     "Synchronous"
     "Video"
     "媒体元"
