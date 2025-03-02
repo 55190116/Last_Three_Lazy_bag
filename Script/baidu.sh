@@ -103,19 +103,9 @@ if [ ! -f "$DOWNLOADED_FILE" ]; then
     exit 1
 fi
 
-# 解压下载的文件并显示实时解压数量
+# 解压下载的文件
 echo "正在解压 $DOWNLOADED_FILE 到 $SAVE_PATH ..."
-unzip -v "$DOWNLOADED_FILE" | grep -c '^' > /tmp/total_files_count
-TOTAL_FILES=$(cat /tmp/total_files_count)
-rm /tmp/total_files_count
-
-unzip -o "$DOWNLOADED_FILE" -d "$SAVE_PATH" | while read -r line; do
-    if echo "$line" | grep -q '^inflating:'; then
-        COMPLETED_FILES=$(unzip -l "$SAVE_PATH" | grep -c '^ ')
-        echo -ne "已解压 $COMPLETED_FILES / $TOTAL_FILES 文件\r"
-    fi
-done
-echo
+execute_command "unzip $DOWNLOADED_FILE -d $SAVE_PATH" "解压 $DOWNLOADED_FILE 失败"
 echo "文件 $DOWNLOADED_FILE 解压成功，已解压到 $SAVE_PATH"
 
 # 定义解压后路径
@@ -123,15 +113,12 @@ EXTRACT_DIR="$SAVE_PATH/Images"
 
 # 检查解压后路径是否存在
 while [ ! -d "$EXTRACT_DIR" ]; do
-    echo "解压后路径 $EXTRACT_DIR 不存在。"
-    read -p "请手动定义解压后路径: " EXTRACT_DIR
+    echo "解压后路径 $EXTRACT_DIR 不存在" >&2
+    read -p "请输入新的解压后路径: " EXTRACT_DIR
     if [ -d "$EXTRACT_DIR" ]; then
         break
     else
-        mkdir -p "$EXTRACT_DIR"
-        if [ $? -ne 0 ]; then
-            echo "无法创建指定的解压后路径 $EXTRACT_DIR，请重新输入。"
-        fi
+        echo "你输入的路径仍然不存在，请重新输入。"
     fi
 done
 
