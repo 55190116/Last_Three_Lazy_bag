@@ -2,7 +2,7 @@
 
 # 定义全局变量，方便后续修改和使用
 DOWNLOAD_DIR="/usr/local/bin"
-DOWNLOAD_URL="https://github.com/qjfoidnh/BaiduPCS-Go/releases/download/v3.9.7/BaiduPCS-Go-v3.9.7-linux-amd64.zip"
+DOWNLOAD_URL="https://gh.llkk.cc/https://github.com/qjfoidnh/BaiduPCS-Go/releases/download/v3.9.7/BaiduPCS-Go-v3.9.7-linux-amd64.zip"
 ZIP_FILE="${DOWNLOAD_DIR}/$(basename ${DOWNLOAD_URL})"
 EXTRACT_DIR="${DOWNLOAD_DIR}/$(basename ${DOWNLOAD_URL} .zip)"
 TARGET_BINARY="${DOWNLOAD_DIR}/BaiduPCS-Go"
