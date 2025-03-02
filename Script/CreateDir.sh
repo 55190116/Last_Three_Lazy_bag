@@ -3,8 +3,8 @@
 # 创建基础目录
 mkdir -p /vol1/1000/{Downloads,Music,Synchronous,Video,媒体元}
 
-# 创建 Docker 相关目录
-mkdir -p /vol1/1000/Docker/{nastools,moviepilot,jellyfin,emby,qbittorrent,transmission,iyuuplus,xunlei,jackett,vertex,iptv - api,navidrome,music - tag - web,reader,komga,wps - office,pdftool,kkfileview,siyuan - note - unlock,alist,firefox,npc,v2raya,sun - panel,emulatorjs,teamspeak,1panel,qinglong,homeassistant,mysql}
+# 创建 Docker 相关目录，去掉目录名中的空格
+mkdir -p /vol1/1000/Docker/{nastools,moviepilot,jellyfin,emby,qbittorrent,transmission,iyuuplus,xunlei,jackett,vertex,iptv-api,navidrome,music-tag-web,reader,komga,wps-office,pdftool,kkfileview,siyuan-note-unlock,alist,firefox,npc,v2raya,sun-panel,emulatorjs,teamspeak,1panel,qinglong,homeassistant,mysql}
 
 # 创建 Video 相关子目录
 mkdir -p /vol1/1000/Video/{Link/{movie,tv},movie,tv,MakeTorrent}
@@ -29,7 +29,7 @@ for parent in "${!dir_structure[@]}"; do
     for sub in ${dir_structure[$parent]}; do
         path="$parent/$sub"
         if ! mkdir -p "$path"; then
-            echo "创建目录 $path 失败" >&2
+            echo "创建目录 $path 失败，可能是权限问题，请检查！" >&2
             exit 1
         fi
     done
