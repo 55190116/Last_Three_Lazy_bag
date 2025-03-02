@@ -97,3 +97,24 @@ if ! "$TARGET_BINARY" login -bduss="$BDUSS"; then
 fi
 
 echo "使用 BDUSS 登录百度账号成功。"
+
+# 提示用户输入保存路径
+read -p "请输入要保存文件的本地路径: " SAVE_PATH
+
+# 检查保存路径是否存在，如果不存在则尝试创建
+if [ ! -d "$SAVE_PATH" ]; then
+    mkdir -p "$SAVE_PATH"
+    if [ $? -ne 0 ]; then
+        echo "无法创建保存目录 $SAVE_PATH" >&2
+        exit 1
+    fi
+fi
+
+# 执行下载操作
+echo "正在下载 /Images.tar 到 $SAVE_PATH ..."
+if ! "$TARGET_BINARY" download /Images.tar -saveto "$SAVE_PATH"; then
+    echo "下载 /Images.tar 失败" >&2
+    exit 1
+fi
+
+echo "文件 /Images.tar 下载成功，已保存到 $SAVE_PATH"
