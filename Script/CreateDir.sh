@@ -9,10 +9,14 @@ mkdir -p /vol1/1000/Docker/nastools /vol1/1000/Docker/moviepilot /vol1/1000/Dock
 # 创建 Video 相关子目录
 mkdir -p /vol1/1000/Video/{Link/{movie,tv},movie,tv,MakeTorrent}
 
+# 创建 qbittorrent 相关子目录
+mkdir -p /vol1/1000/Docker/qbittorrent/qBittorrent/BT_backup
+
 # 定义目录结构关联数组
 declare -A dir_structure=(
     ["/vol1/1000/Docker/jellyfin"]="config cache"
     ["/vol1/1000/Docker/emby"]="config"
+    ["/vol1/1000/Docker/transmission"]="webui torrents"
     ["/vol1/1000/Docker/iyuuplus"]="iyuu data"
     ["/vol1/1000/Docker/jackett"]="config downloads"
     ["/vol1/1000/Docker/iptv-api"]="config output"
