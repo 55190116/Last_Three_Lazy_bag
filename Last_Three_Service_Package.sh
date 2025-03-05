@@ -14,11 +14,12 @@ NC='\033[0m' # 恢复默认样式
 SEPARATOR_LENGTH=120
 SEPARATOR=$(printf "%${SEPARATOR_LENGTH}s" "" | tr " " "=")
 
-# 定义三个加密脚本的下载链接
+# 定义四个加密脚本的下载链接
 script_urls=(
-    "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Last_Three_Lazy_bag.sh.enc"
+    "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Last_Three_Lazy_bag.sh.enc"
     "https://gh.llkk.cc/https://example.com/plugin_package.sh.enc"
     "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Compose_Shop/refs/heads/main/Compose_Shop.sh.enc"
+    "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/npc_load.sh.enc"
 )
 
 # 对应的友好名称
@@ -26,6 +27,7 @@ script_names=(
     "懒人包（一款可以实现系统话安装服务的脚本）"
     "插件包（对懒人包内的插件进行获取的脚本）"
     "Compose商店（一款可以单独安装Compose服务的脚本）"
+    "内网穿透服务包（三人行内网穿透安装脚本，有偿服务）"
 )
 
 function show_logo() {
@@ -61,7 +63,7 @@ while true; do
     read -p "请输入选项编号 (0 退出): " choice
 
     # 检查输入是否为有效的整数
-    if ! [[ "$choice" =~ ^[0-3]$ ]]; then
+    if ! [[ "$choice" =~ ^[0-4]$ ]]; then # 修改为 0 - 4，因为新增了一个选项
         echo -e "${RED}${BOLD}输入无效，请输入 0 到 ${#script_urls[@]} 之间的数字。${NC}"
         sleep 1  # 等待 1 秒让用户看到提示
         continue
@@ -94,17 +96,48 @@ while true; do
         continue
     fi
 
+    # 检查文件是否存在
+    if [ ! -f "$filename" ]; then
+        echo -e "${RED}${BOLD}文件 $filename 未成功下载，请检查网络或源地址。${NC}"
+        echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
+        read -n 1 -s -r
+        tput reset
+        continue
+    fi
+
     echo -e "${BLUE}${BOLD}正在解密脚本，请耐心等待...${NC}"
     # 解密脚本
     decrypted_filename="${filename%.enc}"
     openssl enc -d -aes-256-cbc -salt -pbkdf2 -iter 100000 -in "$filename" -out "$decrypted_filename" -k "$password"
 
     # 检查解密是否成功
-    if [ $? -eq 0 ]; then
-        echo -e "${GREEN}${BOLD}脚本解密成功：$decrypted_filename${NC}"
-        chmod +x "$decrypted_filename"
-    else
+    if [ $? -ne 0 ]; then
         echo -e "${RED}${BOLD}脚本解密失败，请检查密码是否正确。${NC}"
+        echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
+        read -n 1 -s -r
+        tput reset
+        continue
+    fi
+
+    # 检查解密后的文件是否存在
+    if [ ! -f "$decrypted_filename" ]; then
+        echo -e "${RED}${BOLD}解密后的文件 $decrypted_filename 不存在，请检查解密过程。${NC}"
+        echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
+        read -n 1 -s -r
+        tput reset
+        continue
+    fi
+
+    echo -e "${GREEN}${BOLD}脚本解密成功：$decrypted_filename${NC}"
+    chmod +x "$decrypted_filename"
+
+    # 运行解密后的脚本
+    echo -e "${BLUE}${BOLD}正在运行脚本 $decrypted_filename ...${NC}"
+    ./$decrypted_filename
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}${BOLD}脚本 $decrypted_filename 运行失败，请检查脚本内容。${NC}"
+    else
+        echo -e "${GREEN}${BOLD}脚本 $decrypted_filename 运行成功。${NC}"
     fi
 
     echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
