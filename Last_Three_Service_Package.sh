@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 清屏
+clear
+
 # ANSI 转义序列定义颜色和样式
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -77,65 +80,77 @@ while true; do
 
     # 获取所选脚本的 URL
     selected_url=${script_urls[$((choice - 1))]}
-
-    # 提示用户输入解密密码
-    read -s -p "请从作者处获取密码并输入: " password
-    echo
-
-    echo -e "${BLUE}${BOLD}正在为您拉取脚本，请稍候...${NC}"
-    # 拉取所选脚本
     filename=$(basename "$selected_url")
-    wget "$selected_url"
-
-    # 检查 wget 是否成功
-    if [ $? -ne 0 ]; then
-        echo -e "${RED}${BOLD}脚本拉取失败，请检查网络连接或 URL。${NC}"
-        echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
-        read -n 1 -s -r
-        tput reset
-        continue
-    fi
-
-    # 检查文件是否存在
-    if [ ! -f "$filename" ]; then
-        echo -e "${RED}${BOLD}文件 $filename 未成功下载，请检查网络或源地址。${NC}"
-        echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
-        read -n 1 -s -r
-        tput reset
-        continue
-    fi
-
-    echo -e "${BLUE}${BOLD}正在解密脚本，请耐心等待...${NC}"
-    # 解密脚本
     decrypted_filename="${filename%.enc}"
-    openssl enc -d -aes-256-cbc -salt -pbkdf2 -iter 100000 -in "$filename" -out "$decrypted_filename" -k "$password"
 
-    # 检查解密是否成功
-    if [ $? -ne 0 ]; then
-        echo -e "${RED}${BOLD}脚本解密失败，请检查密码是否正确。${NC}"
-        echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
-        read -n 1 -s -r
-        tput reset
-        continue
+    # 检查解密后的文件是否已存在
+    if [ -f "$decrypted_filename" ]; then
+        echo -e "${YELLOW}${BOLD}文件 $decrypted_filename 已存在且已解密，跳过下载和解密步骤，直接运行脚本。${NC}"
+    else
+        # 提示用户输入解密密码
+        read -s -p "请从作者处获取密码并输入: " password
+        echo
+
+        echo -e "${BLUE}${BOLD}正在为您拉取脚本，请稍候...${NC}"
+        # 拉取所选脚本
+        wget "$selected_url"
+
+        # 检查 wget 是否成功
+        if [ $? -ne 0 ]; then
+            echo -e "${RED}${BOLD}脚本拉取失败，请检查网络连接或 URL。${NC}"
+            echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
+            read -n 1 -s -r
+            tput reset
+            continue
+        fi
+
+        # 检查文件是否存在
+        if [ ! -f "$filename" ]; then
+            echo -e "${RED}${BOLD}文件 $filename 未成功下载，请检查网络或源地址。${NC}"
+            echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
+            read -n 1 -s -r
+            tput reset
+            continue
+        fi
+
+        echo -e "${BLUE}${BOLD}正在解密脚本，请耐心等待...${NC}"
+        # 解密脚本
+        openssl enc -d -aes-256-cbc -salt -pbkdf2 -iter 100000 -in "$filename" -out "$decrypted_filename" -k "$password"
+
+        # 检查解密是否成功
+        if [ $? -ne 0 ]; then
+            echo -e "${RED}${BOLD}脚本解密失败，请检查密码是否正确。${NC}"
+            echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
+            read -n 1 -s -r
+            tput reset
+            continue
+        fi
+
+        # 检查解密后的文件是否存在
+        if [ ! -f "$decrypted_filename" ]; then
+            echo -e "${RED}${BOLD}解密后的文件 $decrypted_filename 不存在，请检查解密过程。${NC}"
+            echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
+            read -n 1 -s -r
+            tput reset
+            continue
+        fi
+
+        echo -e "${GREEN}${BOLD}脚本解密成功：$decrypted_filename${NC}"
+        chmod +x "$decrypted_filename"
     fi
-
-    # 检查解密后的文件是否存在
-    if [ ! -f "$decrypted_filename" ]; then
-        echo -e "${RED}${BOLD}解密后的文件 $decrypted_filename 不存在，请检查解密过程。${NC}"
-        echo -e "${YELLOW}按任意键继续回到选择界面...${NC}"
-        read -n 1 -s -r
-        tput reset
-        continue
-    fi
-
-    echo -e "${GREEN}${BOLD}脚本解密成功：$decrypted_filename${NC}"
-    chmod +x "$decrypted_filename"
 
     # 运行解密后的脚本
     echo -e "${BLUE}${BOLD}正在运行脚本 $decrypted_filename ...${NC}"
     ./$decrypted_filename
-    if [ $? -ne 0 ]; then
-        echo -e "${RED}${BOLD}脚本 $decrypted_filename 运行失败，请检查脚本内容。${NC}"
+    run_status=$?
+    if [ $run_status -ne 0 ]; then
+        if [ $run_status -eq 126 ]; then
+            echo -e "${RED}${BOLD}脚本 $decrypted_filename 无法执行，可能是权限问题或文件格式问题。${NC}"
+        elif [ $run_status -eq 127 ]; then
+            echo -e "${RED}${BOLD}脚本 $decrypted_filename 未找到，请检查文件是否存在。${NC}"
+        else
+            echo -e "${RED}${BOLD}脚本 $decrypted_filename 运行失败，请检查脚本内容。${NC}"
+        fi
     else
         echo -e "${GREEN}${BOLD}脚本 $decrypted_filename 运行成功。${NC}"
     fi
