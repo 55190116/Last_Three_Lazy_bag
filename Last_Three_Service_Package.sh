@@ -88,7 +88,7 @@ while true; do
         echo -e "${YELLOW}${BOLD}文件 $decrypted_filename 已存在且已解密，跳过下载和解密步骤，直接运行脚本。${NC}"
     else
         # 提示用户输入解密密码
-        read -s -p "请从作者处获取密码并输入: " password
+        read -s -p "请从作者处获取解密密码并输入: " password
         echo
 
         echo -e "${BLUE}${BOLD}正在为您拉取脚本，请稍候...${NC}"
