@@ -20,7 +20,7 @@ SEPARATOR=$(printf "%${SEPARATOR_LENGTH}s" "" | tr " " "=")
 # 定义四个加密脚本的下载链接
 script_urls=(
     "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Last_Three_Lazy_bag.sh.enc"
-    "https://gh.llkk.cc/https://example.com/plugin_package.sh.enc"
+    "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Get_Plugins.sh
     "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Compose_Shop/refs/heads/main/Compose_Shop.sh.enc"
     "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/npc_load.sh.enc"
 )
