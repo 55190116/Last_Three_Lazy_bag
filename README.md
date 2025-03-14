@@ -97,7 +97,7 @@ services: # 定义服务
 * 进入 **root** 权限，输入 `sudo -i` 并输入飞牛 **密码**，进入 root 权限
 * 输入 `cd /vol1/1000/` 进入用户文件夹根目录，`mkdir Compose` 创建 Compose 文件夹
 * 输入 `cd Compose` 进入 Compose 文件夹，并输入如下命令
-```
+```bash
 wget https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Last_Three_Service_Package.sh
 ```
 * 拉取完成，运行脚本，选择服务 1 拉取懒人包脚本
