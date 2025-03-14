@@ -16,6 +16,7 @@
 
 ## 二、如何单独创建想用的容器
 # 单独启动容器
+```yml
 version: "3"
 services: # 定义服务
   wps-office: # 服务名称
@@ -36,6 +37,7 @@ services: # 定义服务
       - PASSWORD=admin
     restart: always # 总是启动容器
     network_mode: bridge # 网络桥接
+```
 ## 三、懒人包包含容器详细信息
 
 | 序号 | 懒人包是否包含 | 容器名称 | 容器端口 | 初始账号 | 初始密码 | 功能 |
