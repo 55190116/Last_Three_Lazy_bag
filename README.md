@@ -1,4 +1,4 @@
-# 三人行懒人包 （Last\_Three\_Lazy\_bag）
+# 三人行懒人包 （Last_Three_Lazy_bag）
 
 ## 一、前言
 
@@ -15,31 +15,27 @@
 2.0 版本后：不在对外进行公布脚本内容！
 
 ## 二、如何单独创建想用的容器
-
-```
 # 单独启动容器
 version: "3"
 services: # 定义服务
   wps-office: # 服务名称
-   image: linuxserver/wps-office:chinese # 镜像名称（可更改冒号后版本）
-   container_name: wps-office # 容器名称（可更改）
-   ports: # 容器端口（可更改冒号前端口）
-     - 3030:3000
-     - 3031:3001
-   volumes: # 冒号前替换成自身路径即可（可更改）
-     - /vol1/1000/Docker/wps-office/config:/config
-     - /vol1/1000/Docker/wps-office/Desktop:/config/Desktop
-     - /vol1/1000/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
-   environment: # 环境变量
-     - PUID=0
-     - PGID=0
-     - TZ=Asia/Shanghai
-     - CUSTOM_USER=admin
-     - PASSWORD=admin
-   restart: always # 总是启动容器
-   network_mode: bridge # 网络桥接
-```
-
+    image: linuxserver/wps-office:chinese # 镜像名称（可更改冒号后版本）
+    container_name: wps-office # 容器名称（可更改）
+    ports: # 容器端口（可更改冒号前端口）
+      - 3030:3000
+      - 3031:3001
+    volumes: # 冒号前替换成自身路径即可（可更改）
+      - /vol1/1000/Docker/wps-office/config:/config
+      - /vol1/1000/Docker/wps-office/Desktop:/config/Desktop
+      - /vol1/1000/Docker/wps-office/Fonts:/usr/share/fonts/wps-fonts
+    environment: # 环境变量
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+      - CUSTOM_USER=admin
+      - PASSWORD=admin
+    restart: always # 总是启动容器
+    network_mode: bridge # 网络桥接
 ## 三、懒人包包含容器详细信息
 
 | 序号 | 懒人包是否包含 | 容器名称 | 容器端口 | 初始账号 | 初始密码 | 功能 |
@@ -99,19 +95,13 @@ services: # 定义服务
 * 进入 **root** 权限，输入 `sudo -i` 并输入飞牛 **密码**，进入 root 权限
 * 输入 `cd /vol1/1000/` 进入用户文件夹根目录，`mkdir Compose` 创建 Compose 文件夹
 * 输入 `cd Compose` 进入 Compose 文件夹，并输入如下命令
-
 ```
-wget -O Last_Three_Lazy_bag.sh.enc https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Last_Three_Lazy_bag.sh.enc
+wget https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Last_Three_Service_Package.sh
 ```
-
-* 拉取完成对脚本进行解密，解密密码联系作者
-
-```
-openssl enc -d -aes-256-cbc -salt -pbkdf2 -iter 100000 -in Last_Three_Lazy_bag.sh.enc -out Last_Three_Lazy_bag.sh
-```
-
-* 解密完成后，输入 `bash Last_Three_Lazy_bag.sh` 运行脚本
-* 按照提示输入数字即可完成懒人包的安装
+* 拉取完成，运行脚本，选择服务 1 拉取懒人包脚本
+* 输入解密密码进行解密，解密密码找作者免费获取
+* 拉取完成，运行脚本，输入脚本密码，脚本密码找作者免费获取
+* 选择系统，下载配置文件，选择执行安装服务即可
 
 ## 六、如何使用 Sun-Panel 美化配置
 
@@ -145,7 +135,7 @@ v1.0.3 版本更新日志：
 
 3、更新了新的容器 home-assistant 智能家居集成
 
-4、更新了 Last\_Three\_Lazy\_bag.sh 执行顺序提示
+4、更新了 Last_Three_Lazy_bag.sh 执行顺序提示
 
 5、更新了细节性的 Bug 内容
 
@@ -283,4 +273,5 @@ v 2.0.1 更新日志
 
 ### 作者博客：***[三人行博客](https://blog.010322.xyz/)***
 
-### 作者绿泡泡：***M13051661743***
+### 作者微信：***M13051661743***
+    
