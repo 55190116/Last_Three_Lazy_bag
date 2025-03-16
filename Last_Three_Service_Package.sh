@@ -19,6 +19,7 @@ SEPARATOR=$(printf "%${SEPARATOR_LENGTH}s" "" | tr " " "=")
 
 # 定义加速链接选项
 ACCELERATOR_OPTIONS=(
+    "不使用加速链接"
     "使用脚本自带加速链接: https://gh.llkk.cc/"
     "使用脚本自带加速链接: https://ghproxy.cc/"
     "手动输入加速链接"
@@ -49,13 +50,15 @@ function handle_accelerator_selection() {
         echo -e "${GREEN}${BOLD}退出脚本，感谢您对三人行的信赖与支持！${NC}"
         exit 0
     elif [ "$choice" -eq 1 ]; then
-        ACCELERATOR="https://gh.llkk.cc/"
+        ACCELERATOR=""
     elif [ "$choice" -eq 2 ]; then
-        ACCELERATOR="https://ghproxy.cc/"
+        ACCELERATOR="https://gh.llkk.cc/"
     elif [ "$choice" -eq 3 ]; then
+        ACCELERATOR="https://ghproxy.cc/"
+    elif [ "$choice" -eq 4 ]; then
         read -p "请输入加速链接: " ACCELERATOR
     else
-        echo -e "${RED}${BOLD}输入无效，请输入 0 到 3 之间的数字。${NC}"
+        echo -e "${RED}${BOLD}输入无效，请输入 0 到 4 之间的数字。${NC}"
         sleep 1
         handle_accelerator_selection
     fi
