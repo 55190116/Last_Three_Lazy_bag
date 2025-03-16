@@ -17,12 +17,56 @@ NC='\033[0m' # 恢复默认样式
 SEPARATOR_LENGTH=120
 SEPARATOR=$(printf "%${SEPARATOR_LENGTH}s" "" | tr " " "=")
 
+# 定义加速链接选项
+ACCELERATOR_OPTIONS=(
+    "使用脚本自带加速链接: https://gh.llkk.cc/"
+    "使用脚本自带加速链接: https://ghproxy.cc/"
+    "手动输入加速链接"
+)
+
+# 显示加速链接选择菜单
+function show_accelerator_menu() {
+    clear
+    show_logo
+    echo -e "${YELLOW}${BOLD}请选择加速链接方式：${NC}"
+    for i in "${!ACCELERATOR_OPTIONS[@]}"; do
+        printf "  ${YELLOW}%-2d. %-15s${NC}\n" $((i + 1)) "${ACCELERATOR_OPTIONS[$i]}"
+    done
+    echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
+}
+
+# 检查输入是否为有效的整数
+function is_valid_input() {
+    local input=$1
+    [[ "$input" =~ ^[0-5]$ ]]
+}
+
+# 处理加速链接选择
+function handle_accelerator_selection() {
+    show_accelerator_menu
+    read -e -p "请输入选项编号 (0 退出): " choice
+    if [ "$choice" -eq 0 ]; then
+        echo -e "${GREEN}${BOLD}退出脚本，感谢您对三人行的信赖与支持！${NC}"
+        exit 0
+    elif [ "$choice" -eq 1 ]; then
+        ACCELERATOR="https://gh.llkk.cc/"
+    elif [ "$choice" -eq 2 ]; then
+        ACCELERATOR="https://ghproxy.cc/"
+    elif [ "$choice" -eq 3 ]; then
+        read -p "请输入加速链接: " ACCELERATOR
+    else
+        echo -e "${RED}${BOLD}输入无效，请输入 0 到 3 之间的数字。${NC}"
+        sleep 1
+        handle_accelerator_selection
+    fi
+}
+
 # 定义四个加密脚本的下载链接
 script_urls=(
-    "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Last_Three_Lazy_bag.sh.enc"
-    "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Get_Plugins.sh.enc"
-    "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Compose_Shop/refs/heads/main/Compose_Shop.sh.enc"
-    "https://gh.llkk.cc/https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/npc_load.sh.enc"
+    "https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Last_Three_Lazy_bag.sh.enc"
+    "https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/Get_Plugins.sh.enc"
+    "https://raw.githubusercontent.com/ATaKi-Myt/Compose_Shop/refs/heads/main/Compose_Shop.sh.enc"
+    "https://raw.githubusercontent.com/ATaKi-Myt/Last_Three_Lazy_bag/refs/heads/main/Script/npc_load.sh.enc"
 )
 
 # 对应的友好名称
@@ -63,16 +107,9 @@ function show_menu() {
     echo -e "${BLUE}${BOLD}${SEPARATOR}${NC}"
 }
 
-# 检查输入是否为有效的整数
-function is_valid_input() {
-    local input=$1
-    # 修改为允许输入 0 - 5
-    [[ "$input" =~ ^[0-5]$ ]]
-}
-
 # 下载文件
 function download_file() {
-    local url=$1
+    local url="$ACCELERATOR$1"
     local filename=$(basename "$url")
     wget "$url"
     return $?
@@ -113,7 +150,7 @@ function check_docker_compose_installed() {
             echo -e "${BLUE}${BOLD}最新版本号为 $latest_version，正在安装 Docker Compose $latest_version，请稍候...${NC}"
             # 安装 Docker Compose 最新版本
             mkdir -p ~/.docker/cli-plugins/
-            curl -SL https://gh.llkk.cc/https://github.com/docker/compose/releases/download/$latest_version/docker-compose-$(uname -s)-$(uname -m) -o ~/.docker/cli-plugins/docker-compose
+            curl -SL "$ACCELERATORhttps://github.com/docker/compose/releases/download/$latest_version/docker-compose-$(uname -s)-$(uname -m)" -o ~/.docker/cli-plugins/docker-compose
             chmod +x ~/.docker/cli-plugins/docker-compose
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}${BOLD}Docker Compose $latest_version 安装成功。${NC}"
@@ -182,12 +219,15 @@ function handle_script_selection() {
     fi
 }
 
+# 处理加速链接选择
+handle_accelerator_selection
+
 while true; do
     show_menu
     read -e -p "请输入选项编号 (0 退出): " choice
 
     # 修改为允许输入 0 - 5
-    if ! is_valid_input "$choice" 5; then
+    if ! is_valid_input "$choice"; then
         echo -e "${RED}${BOLD}输入无效，请输入 0 到 5 之间的数字。${NC}"
         sleep 1
         continue
