@@ -95,7 +95,7 @@ services: # 定义服务
 
 * 打开 **FinalShell** 软件
 * 进入 **root** 权限，输入`sudo -i` 并输入飞牛 **密码**，进入 root 权限
-* 输入`cd/vol1/1000/` 进入用户文件夹根目录，`mkdir Compose` 创建 Compose 文件夹
+* 输入`cd /vol1/1000/` 进入用户文件夹根目录，`mkdir Compose` 创建 Compose 文件夹
 * 输入`cd Compose` 进入 Compose 文件夹，并输入如下命令
 
 ```bash
