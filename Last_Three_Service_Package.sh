@@ -151,14 +151,23 @@ function check_docker_compose_installed() {
                 return 1
             fi
             echo -e "${BLUE}${BOLD}最新版本号为 $latest_version，正在安装 Docker Compose $latest_version，请稍候...${NC}"
-            # 安装 Docker Compose 最新版本
-            mkdir -p ~/.docker/cli-plugins/
-            curl -SL "$ACCELERATORhttps://github.com/docker/compose/releases/download/$latest_version/docker-compose-$(uname -s)-$(uname -m)" -o ~/.docker/cli-plugins/docker-compose
-            chmod +x ~/.docker/cli-plugins/docker-compose
+            target_dir="$HOME/.docker/cli-plugins"
+            mkdir -p "$target_dir"
+            if [ $? -ne 0 ]; then
+                echo -e "${RED}${BOLD}无法创建目录 $target_dir，请检查权限。${NC}"
+                return 1
+            fi
+            target_file="$target_dir/docker-compose"
+            curl -SL "${ACCELERATOR}https://github.com/docker/compose/releases/download/$latest_version/docker-compose-$(uname -s)-$(uname -m)" -o "$target_file"
+            if [ $? -ne 0 ]; then
+                echo -e "${RED}${BOLD}下载 Docker Compose 失败，请检查网络连接。${NC}"
+                return 1
+            fi
+            chmod +x "$target_file"
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}${BOLD}Docker Compose $latest_version 安装成功。${NC}"
             else
-                echo -e "${RED}${BOLD}Docker Compose $latest_version 安装失败，请检查网络或手动安装。${NC}"
+                echo -e "${RED}${BOLD}设置 Docker Compose 权限失败，请检查文件路径和权限。${NC}"
             fi
         else
             echo -e "${YELLOW}您选择不安装 Docker Compose，继续回到选择菜单。${NC}"
