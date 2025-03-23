@@ -19,10 +19,18 @@ SEPARATOR=$(printf "%${SEPARATOR_LENGTH}s" "" | tr " " "=")
 
 # 定义加速链接选项
 ACCELERATOR_OPTIONS=(
-    "不使用加速链接"
-    "使用脚本自带加速链接: https://gh.llkk.cc/"
-    "使用脚本自带加速链接: https://ghproxy.cc/"
-    "手动输入加速链接"
+    "不加速（建议墙外用户使用）"
+    "使用脚本自带加速链接: https://gitproxy.click/"
+    "使用脚本自带加速链接: https://github.moeyy.xyz/"
+    "使用脚本自带加速链接: https://github.tbedu.top/"
+    "使用脚本自带加速链接: https://github.proxy.class3.fun/"
+    "使用脚本自带加速链接: https://ghfile.geekertao.top"
+    "使用脚本自带加速链接: https://github.proxy.class3.fun/"
+    "使用脚本自带加速链接: https://github-proxy.lixxing.top/"
+    "使用脚本自带加速链接: https://ghf.无名氏.top/"
+    "使用脚本自带加速链接: https://ghm.078465.xyz/"
+    "使用脚本自带加速链接: https://gh-proxy.net/"
+    "手动输入加速链接（自行寻找加速链接）"
 )
 
 # 显示加速链接选择菜单
@@ -52,13 +60,29 @@ function handle_accelerator_selection() {
     elif [ "$choice" -eq 1 ]; then
         ACCELERATOR=""
     elif [ "$choice" -eq 2 ]; then
-        ACCELERATOR="https://gh.llkk.cc/"
+        ACCELERATOR="https://gitproxy.click/"
     elif [ "$choice" -eq 3 ]; then
-        ACCELERATOR="https://ghproxy.cc/"
+        ACCELERATOR="https://github.moeyy.xyz/"
     elif [ "$choice" -eq 4 ]; then
+        ACCELERATOR="https://github.tbedu.top/"
+    elif [ "$choice" -eq 5 ]; then
+        ACCELERATOR="https://github.proxy.class3.fun/"
+    elif [ "$choice" -eq 6 ]; then
+        ACCELERATOR="https://ghfile.geekertao.top"
+    elif [ "$choice" -eq 7 ]; then
+        ACCELERATOR="https://github.proxy.class3.fun/"
+    elif [ "$choice" -eq 8 ]; then
+        ACCELERATOR="https://github-proxy.lixxing.top/"
+    elif [ "$choice" -eq 9 ]; then
+        ACCELERATOR="https://ghf.无名氏.top/"
+    elif [ "$choice" -eq 10 ]; then
+        ACCELERATOR="https://ghm.078465.xyz/"
+    elif [ "$choice" -eq 11 ]; then
+        ACCELERATOR="https://gh-proxy.net/"
+    elif [ "$choice" -eq 12 ]; then
         read -p "请输入加速链接: " ACCELERATOR
     else
-        echo -e "${RED}${BOLD}输入无效，请输入 0 到 4 之间的数字。${NC}"
+        echo -e "${RED}${BOLD}输入无效，请输入 0 到 12 之间的数字。${NC}"
         sleep 1
         handle_accelerator_selection
     fi
@@ -238,7 +262,6 @@ while true; do
     show_menu
     read -e -p "请输入选项编号 (0 退出): " choice
 
-    # 修改为允许输入 0 - 5
     if ! is_valid_input "$choice"; then
         echo -e "${RED}${BOLD}输入无效，请输入 0 到 5 之间的数字。${NC}"
         sleep 1
