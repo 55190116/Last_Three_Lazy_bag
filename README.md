@@ -271,6 +271,23 @@ v 2.0.1 更新日志
 
 1、为了适配后续项目的 Nas 系统，还请大家多多支持赞助我们的博客，为大家提供美好且优质的脚本运行
 
+### v.2.0.2
+
+v 2.0.2 更新日志
+
+此版本对下载加速链接进行了更新，更新链接如下：
+
+* 加速链接: https://gitproxy.click/
+* 加速链接: https://github.moeyy.xyz/
+* 加速链接: https://github.tbedu.top/
+* 加速链接: https://github.proxy.class3.fun/
+* 加速链接: https://ghfile.geekertao.top
+* 加速链接: https://github.proxy.class3.fun/
+* 加速链接: https://github-proxy.lixxing.top/
+* 加速链接: https://ghf.无名氏.top/
+* 加速链接: https://ghm.078465.xyz/
+* 加速链接: https://gh-proxy.net/
+
 ## 八、作者信息
 
 ### 哔哩哔哩主页：***[最后三人行个人主页](https://space.bilibili.com/3546844344879871?spm_id_from=333.1007.0.0)***
